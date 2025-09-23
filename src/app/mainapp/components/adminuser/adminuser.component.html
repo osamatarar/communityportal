@@ -2,25 +2,21 @@
         <ng-template #start> <h4> {{selectedReferenceType}} </h4>
         </ng-template>
         <ng-template #end>
-            <p-button label="New User" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
-        </ng-template> 
+            <p-button [rounded]="true" label="New User" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+        </ng-template>
 </p-toolbar>
-    <br/>
-   
     <core-table [TableSPName]="'GetUsers'"
-                [Columns]="Columns"  
+                [Columns]="Columns"
                 [Actions]="Actions"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
 
     <dynamic-form [apiName]="'generic/UmUser'"
-                  [ShowDialog]="ShowDialog" 
+                  [ShowDialog]="ShowDialog"
                   [HeaderName]="'Add new user'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
-   
+
  <p-confirmdialog [style]="{ width: '450px' }" />
-
-
