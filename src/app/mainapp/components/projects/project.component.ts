@@ -100,7 +100,13 @@ export class ProjectComponent {
           group: 'fourthrow' ,
           fullWidth: false   
         },
-
+        {
+          type: 'file' as const,
+          name: 'documentId',
+          label: 'Project Picture',
+          group: 'fourthrow' ,
+          fullWidth: false   
+        },
         {
           type: 'textarea' as const,
           name: 'Description',
@@ -109,6 +115,7 @@ export class ProjectComponent {
           group: 'fifthrow' ,
           fullWidth: true   
         },
+      
         {
           type: 'text' as const,
           name: 'AccountTypeId',

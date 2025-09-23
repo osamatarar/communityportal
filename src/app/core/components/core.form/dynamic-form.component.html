@@ -13,12 +13,12 @@
             @if(field.type !== 'select') {<label [for]="field.name">{{ field.label }} @if(field.requiredSymbol){<span >[*]</span> } </label> }
               <!-- Input types -->
               @if (field.type === 'text' || field.type === 'email' || field.type === 'number') {
-                <input 
+                  <input 
                   [readOnly]="field.readonly"
                   pInputText 
                   [id]="field.name" 
                   [formControlName]="field.name" 
-                  [type]="field.type" />
+                  [type]="field.type" /> 
               }
 
               @else if (field.type === 'textarea') {
@@ -50,6 +50,23 @@
                  [formControlName]="field.name"
      
                  />
+              }
+              @else if(field.type ==='file'){
+                    <div class="w-full">
+                        <!-- <file-preview [uploadedFiles]="uploadedFiles"
+                                      (previewClick)="fileUpload.choose()">
+                        </file-preview> -->
+                        <p-fileupload
+                            #fileUpload
+                                    name="demo[]"
+                                    (onUpload)="onUpload($event)"
+                                    [multiple]="true"
+                                    accept="image/*"
+                                    maxFileSize="1000000"
+                                    mode="advanced"
+                                    url="https://www.primefaces.org/cdn/api/upload.php">
+                        </p-fileupload>
+                    </div>
               }
              <!-- Error message -->
               @if (form.get(field.name)?.invalid && form.get(field.name)?.touched) {

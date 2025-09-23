@@ -1,4 +1,4 @@
-export type FieldType = 'text'|'email'|'number'|'date'|'select'|'radio'|'checkbox'|'textarea';
+export type FieldType = 'text'|'email'|'number'|'date'|'select'|'radio'|'checkbox'|'textarea' | 'file';
 
 
 export interface FieldOption {

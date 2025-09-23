@@ -14,6 +14,8 @@ import { GenericHttpService } from '@/services/genericHttpSerivce';
 import { ToastModule } from 'primeng/toast';
 import { CoreDropdownComponent } from '../core.dropdown';
 import { DatePickerModule } from 'primeng/datepicker';
+import { FileUploadModule } from 'primeng/fileupload';
+import { FilePreviewComponent } from '../filepreview/fileperview.component';
 
 
 @Component({
@@ -21,7 +23,7 @@ selector: 'dynamic-form',
 templateUrl: './dynamic-form.component.html',
 styleUrl :'./dynamic-form.css',
 standalone:true,
-imports: [ReactiveFormsModule, ToastModule,CoreDropdownComponent, DatePickerModule, FluidModule, DialogModule, TextareaModule, InputTextModule, ButtonModule, CheckboxModule, RadioButtonModule, InputTextModule],
+imports: [ReactiveFormsModule,FilePreviewComponent, FileUploadModule, ToastModule,CoreDropdownComponent, DatePickerModule, FluidModule, DialogModule, TextareaModule, InputTextModule, ButtonModule, CheckboxModule, RadioButtonModule, InputTextModule],
 })
 export class DynamicFormComponent implements OnChanges {
     
@@ -55,6 +57,7 @@ export class DynamicFormComponent implements OnChanges {
          this.form.reset();   
          this.form.patchValue(this.patchData);
         }
+        this.loadAttachments();
     }
 
 
@@ -132,14 +135,36 @@ export class DynamicFormComponent implements OnChanges {
             this.toggleDialog.emit(this.ShowDialog);
     }
     
-        deleteProduct(product: any) {
-            this.confirmationService.confirm({
-                message: 'Are you sure you want to delete ' + product.name + '?',
-                header: 'Confirm',
-                icon: 'pi pi-exclamation-triangle',
-                accept: () => {
-                 
-                }
+    uploadedFiles: any[] = [];
+    onUpload(event: any) {
+          for (const file of event.files) {
+      const formData = new FormData();
+      formData.append('file', file, file.name);
+
+      this.httpService.post('user/upload', formData)
+        .subscribe({
+          next: (res: { filePath: any; }) => {
+            this.uploadedFiles.push({
+              name: file.name,
+              objectURL: res.filePath   // returned from backend
             });
-        }
+            this.messageService.add({ severity: 'success', summary: 'Uploaded', detail: file.name });
+          },
+          error: () => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: file.name });
+          }
+        });
+    }
+    }
+
+
+    loadAttachments() {
+    this.httpService.getAll('user/GetFiles')
+      .subscribe((res: any[]) => {
+        this.uploadedFiles = res.map(file => ({
+          name: file.name,
+          objectURL: file.url
+        }));
+      });
+  }
 }
