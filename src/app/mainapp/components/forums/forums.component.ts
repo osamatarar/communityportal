@@ -9,55 +9,44 @@ import { DynamicFormComponent } from '@/core/components/core.form/dynamic-form.c
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { FluidClasses } from 'primeng/fluid';
 
 @Component({
-  selector: 'app-project',
-  standalone: true,
+  selector: 'app-forums',
+  templateUrl: './forums.component.html',
   imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
-  templateUrl: './event.component.html'
 
+  styleUrls: ['./forums.component.css']
 })
-
-export class EventComponent {
+export class ForumsComponent {
     constructor(private confirmationService: ConfirmationService) {}
-    selectedReferenceType :string ="Event List";
+    selectedReferenceType :string ="All Forums";
     pathFormValue : any= null;
 
     Columns : TableColumn[] =
     [
-
-      { field: 'StartDate', header: 'Creation Date', sortable: false, style: 'min-width:16rem', },
-      { field: 'CreatedBy', header: 'Created By', sortable: false, style: 'min-width:15rem', type:'date' },
-      { field: 'Name', header: 'Event Name', sortable: true, style: 'min-width:16rem' },
-      { field: 'Location', header: 'Event Location', sortable: true, style: 'min-width:16rem' },
-      {  field: 'Gender', header: 'Gender', sortable: false, style: 'min-width:15rem', },
+      { field: 'StatusDate', header: 'Status Date', sortable: true, style: 'min-width:10rem' },
+      { field: 'Date', header: 'Date', sortable: true, style: 'min-width:16rem' },
+      { field: 'Title', header: 'Title', sortable: true, style: 'min-width:16rem' },
+      { field: 'AgeLimit', header: 'Age Limit', sortable: false, style: 'min-width:16rem', },
+      { field: 'Gender', header: 'Gender', sortable: false, style: 'min-width:15rem', type:'date' },
     ];
 
     FormConfig = {
-    formName: "eventForm",
+    formName: "forumForm",
     controls:   [
         {
           type: 'text' as const,
-          name: 'Code',
-          label: 'Event Id',
-          placeholder: 'Enter FullName',
+          name: 'ForumTitle',
+          label: 'Forum Title',
+          placeholder: 'Enter Forum Title',
           validators: { required: true, minLength: 3 },
-          value : "0002",
-          readonly : true,
-          group: 'first'
-        },
-        {
-          type: 'text' as const,
-          name: 'Title',
-          label: 'Event Name',
-          placeholder: 'Enter Title',
-          validators: { required: true, minLength: 3 },
-          group: 'first'
+          fullwidth: true,
         },
         {
           type: 'date' as const,
           name: 'StartDate',
-          label: 'Project Start Date',
+          label: 'Start Date',
           placeholder: 'Enter Start Date',
           validators: { "required": true } ,
           requiredSymbol : true,
@@ -67,54 +56,21 @@ export class EventComponent {
         {
           type: 'date' as const,
           name: 'EndDate',
-          label: 'Project End Date',
+          label: 'End Date',
           placeholder: 'Enter End Dat',
           validators: { required: true },
           group: 'secondrow' ,
           fullWidth: false
         },
-        {
-          type: 'text' as const,
-          name: 'Location',
-          label: 'Project Location',
-          placeholder: 'Enter Project Location',
+          {
+          type: 'number' as const,
+          name: 'StartAge',
+          label: 'Start Age',
+          placeholder: 'Enter Start Age',
+          validators: { required: true },
           group: 'thirdrow' ,
           fullWidth: false
         },
-        {
-          type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Main Community',
-          placeholder: 'Select Community',
-          url : "User/GetReferenceTypes?id=6",
-          group: 'thirdrow' ,
-          fullWidth: false
-        },
-        {
-          type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Sub Community',
-          placeholder: 'Select SubComunity',
-          url : "User/GetReferenceTypes?id=6",
-          group: 'fourthrow' ,
-          fullWidth: false
-        },
-
-        {
-          type: 'textarea' as const,
-          name: 'Description',
-          label: 'Project Description',
-          placeholder: 'Text  here....',
-          group: 'fifthrow' ,
-          fullWidth: true
-        },
-        {
-          type: 'text' as const,
-          name: 'AccountTypeId',
-          label: 'Description',
-          placeholder: 'Enter Description',
-          hidden : true
-        }
 
       ]
     }
@@ -122,6 +78,7 @@ export class EventComponent {
     Actions: TableAction[] = [
     { icon: 'pi pi-pencil', severity: 'info', action: 'edit' },
     { icon: 'pi pi-trash', severity: 'danger', action: 'delete',  },
+    { icon: 'pi pi-eye', severity: 'info', action: 'view',  },
   ];
 
 

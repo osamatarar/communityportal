@@ -14,10 +14,10 @@
             <ng-template #caption>
                 <div class="flex items-center justify-between">
                     @if(TableHeaderName)
-                    { 
+                    {
                         <h5 class="m-0"> {{TableHeaderName}} </h5>
                     }
-                  
+
                     <p-iconfield style="float: left;">
                         <p-inputicon styleClass="pi pi-search" />
                         <input pInputText type="text" (input)="onGlobalFilter($event)" placeholder="Search..." />
@@ -27,7 +27,7 @@
             <ng-template #header>
                 <tr>
                     @for (col of Columns; track col.field) {
-                    <th 
+                    <th
                         [pSortableColumn]="col.field"
                         [style]="col.style">
 
@@ -48,15 +48,19 @@
                         <td [style]="col.style">
                          @if (col.type === 'date') {
                                 {{ data[col.field] | date:'dd-MM-yyyy' }}
-                                } @else {
+                                } @else if(col.field != 'DisableEnable'){
                                 {{ data[col.field] }}
                              }
-                        </td>
+                        @if (col.field === 'DisableEnable') {
+
+                            <p-toggleswitch (onChange)="onToggleChange($event.checked)" [(ngModel)]="data[col.field]" />
+
+                        }
                     }
                     <td>
                  @for (action of Actions; track action.action) {
                             <p-button
-                            severity="contrast" 
+                            severity="contrast"
                             [icon]="action.icon"
                             [rounded]="false"
                             [outlined]="false"
@@ -66,6 +70,6 @@
           }    </td>
                 </tr>
             </ng-template>
-</p-table> 
+</p-table>
 
 <p-confirmdialog [style]="{ width: '450px' }" />

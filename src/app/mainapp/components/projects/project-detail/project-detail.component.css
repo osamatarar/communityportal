@@ -1,0 +1,97 @@
+.page-content {
+  padding: 0 0.2rem; /* whatever your table section uses */
+}
+.project-card {
+  width: 100%;
+  border-radius: 8px;
+  background: #fff;
+  /* any shadow, etc. */
+}
+
+    /* --- flex container: image left, content right --- */
+    .card-body {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    /* --- left side image --- */
+    .image-box {
+      width: 320px;
+      min-width: 320px;
+      position: relative;
+    }
+
+    .image-placeholder {
+      background: #d9d9d9;
+      border-radius: 12px;
+      width: 100%;
+      padding-top: 70%; /* keep aspect ratio */
+    }
+
+    .image-footer {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      right: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .project-id {
+      font-weight: 600;
+    }
+
+    /* --- right side content --- */
+    .content-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      margin: 0 0 1rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .info i {
+      color: #22c55e; /* green icon */
+      margin-right: 0.5rem;
+    }
+
+    .divider {
+      margin: 1rem 0;
+    }
+
+    .description {
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+    }
+
+    /* --- responsive for small screens --- */
+    @media (max-width: 768px) {
+      .card-body {
+        flex-direction: column;
+      }
+      .image-box {
+        width: 100%;
+        min-width: unset;
+      }
+    }
+.card-container {
+  width: 100%;           /* use the full parent width */
+  max-width: none;       /* remove any max limit */
+}

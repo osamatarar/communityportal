@@ -9,21 +9,22 @@ import { DynamicFormComponent } from '@/core/components/core.form/dynamic-form.c
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project',
   standalone: true,
   imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
   templateUrl: './project.component.html'
-  
+
 })
 
 export class ProjectComponent {
-    constructor(private confirmationService: ConfirmationService) {}
+    constructor(private confirmationService: ConfirmationService,private router:Router) {}
     selectedReferenceType :string ="Projects List";
     pathFormValue : any= null;
 
-    Columns : TableColumn[] = 
+    Columns : TableColumn[] =
     [
       { field: 'Code', header: 'Code', sortable: true, style: 'min-width:10rem' },
       { field: 'Title', header: 'Title', sortable: true, style: 'min-width:16rem' },
@@ -33,7 +34,7 @@ export class ProjectComponent {
       { field: 'EndDate', header: 'End Date', sortable: false, style: 'min-width:15rem',type:'date'  },
       {  field: 'Status', header: 'Status', sortable: false, style: 'min-width:15rem', },
     ];
-    
+
     FormConfig = {
     formName: "eventForm",
     controls:   [
@@ -45,7 +46,7 @@ export class ProjectComponent {
           validators: { required: true },
           value : "80",
           readonly : true,
-          group: 'first' 
+          group: 'first'
         },
         {
           type: 'text' as const,
@@ -53,7 +54,7 @@ export class ProjectComponent {
           label: 'Event Name',
           placeholder: 'Enter Event Name',
           validators: { required: true, minLength: 3 },
-          group: 'first' 
+          group: 'first'
         },
         {
           type: 'date' as const,
@@ -63,7 +64,7 @@ export class ProjectComponent {
           validators: { "required": true } ,
           requiredSymbol : true,
           group: 'secondrow',
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'date' as const,
@@ -72,7 +73,7 @@ export class ProjectComponent {
           placeholder: 'Enter End Dat',
           validators: { required: true },
           group: 'secondrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'text' as const,
@@ -80,7 +81,7 @@ export class ProjectComponent {
           label: 'Project Location',
           placeholder: 'Enter Project Location',
           group: 'thirdrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'select' as const,
@@ -89,7 +90,7 @@ export class ProjectComponent {
           placeholder: 'Select Community',
           url : "User/GetReferenceTypes?id=6",
           group: 'thirdrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'select' as const,
@@ -98,7 +99,7 @@ export class ProjectComponent {
           placeholder: 'Select SubComunity',
           url : "User/GetReferenceTypes?id=6",
           group: 'fourthrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
 
         {
@@ -107,22 +108,23 @@ export class ProjectComponent {
           label: 'Project Description',
           placeholder: 'Text  here....',
           group: 'fifthrow' ,
-          fullWidth: true   
+          fullWidth: true
         },
         {
           type: 'text' as const,
           name: 'AccountTypeId',
           label: 'Description',
           placeholder: 'Enter Description',
-          hidden : true 
+          hidden : true
         }
-        
+
       ]
     }
 
     Actions: TableAction[] = [
     { icon: 'pi pi-pencil', severity: 'info', action: 'edit' },
     { icon: 'pi pi-trash', severity: 'danger', action: 'delete',  },
+    { icon: 'pi pi-eye', severity: 'info', action: 'view',  },
   ];
 
 
@@ -134,20 +136,27 @@ export class ProjectComponent {
          this.pathFormValue = {...event.row,  ...this.pathFormValue};
     }
     else if(event.action =='delete')
-    {    
+    {
        this.confirmationService.confirm({
                 message: 'Are you sure you want to delete',
                 header: 'Confirm',
                 icon: 'pi pi-exclamation-triangle',
                 accept: () => {
-                  
-           
+
+
                 }
             });
+    }else if(event.action =='view')
+    {
+        this.router.navigate(
+            ['/app/project-detail'],
+            { queryParams: { id: event.row.ID } }
+        );
+
     }
   }
 
-  
+
 
 
   ShowDialog : boolean =false;

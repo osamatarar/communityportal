@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreDropdownComponent } from '@/core/components/core.dropdown';
@@ -11,26 +12,27 @@ import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 
 @Component({
-  selector: 'app-project',
-  standalone: true,
+  selector: 'app-venues',
   imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
-  templateUrl: './event.component.html'
 
+  templateUrl: './venues.component.html',
+  styleUrls: ['./venues.component.css']
 })
+export class VenuesComponent  {
 
-export class EventComponent {
-    constructor(private confirmationService: ConfirmationService) {}
-    selectedReferenceType :string ="Event List";
+ constructor(private confirmationService: ConfirmationService) {}
+    selectedReferenceType :string ="Venues";
     pathFormValue : any= null;
 
     Columns : TableColumn[] =
     [
-
-      { field: 'StartDate', header: 'Creation Date', sortable: false, style: 'min-width:16rem', },
-      { field: 'CreatedBy', header: 'Created By', sortable: false, style: 'min-width:15rem', type:'date' },
-      { field: 'Name', header: 'Event Name', sortable: true, style: 'min-width:16rem' },
-      { field: 'Location', header: 'Event Location', sortable: true, style: 'min-width:16rem' },
-      {  field: 'Gender', header: 'Gender', sortable: false, style: 'min-width:15rem', },
+      { field: 'Code', header: 'Code', sortable: true, style: 'min-width:10rem' },
+      { field: 'Title', header: 'Title', sortable: true, style: 'min-width:16rem' },
+      { field: 'Community', header: 'Community', sortable: true, style: 'min-width:16rem' },
+      { field: 'Location', header: 'Location', sortable: false, style: 'min-width:16rem', },
+      { field: 'StartDate', header: 'Start Date', sortable: false, style: 'min-width:15rem', type:'date' },
+      { field: 'EndDate', header: 'End Date', sortable: false, style: 'min-width:15rem',type:'date'  },
+      {  field: 'Status', header: 'Status', sortable: false, style: 'min-width:15rem', },
     ];
 
     FormConfig = {
@@ -38,19 +40,19 @@ export class EventComponent {
     controls:   [
         {
           type: 'text' as const,
-          name: 'Code',
-          label: 'Event Id',
-          placeholder: 'Enter FullName',
-          validators: { required: true, minLength: 3 },
-          value : "0002",
+          name: 'ID',
+          label: 'Event ID',
+          placeholder: 'Enter Event Id',
+          validators: { required: true },
+          value : "80",
           readonly : true,
           group: 'first'
         },
         {
           type: 'text' as const,
-          name: 'Title',
+          name: 'Name',
           label: 'Event Name',
-          placeholder: 'Enter Title',
+          placeholder: 'Enter Event Name',
           validators: { required: true, minLength: 3 },
           group: 'first'
         },
@@ -162,5 +164,6 @@ export class EventComponent {
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
   }
+
 
 }
