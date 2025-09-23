@@ -3,3 +3,12 @@
 @use './layout/layout.scss';
 @use 'primeicons/primeicons.css';
 @use './demo/demo.scss';
+@layer components {
+    .p-dialog-footer .p-button {
+        padding-inline: calc(var(--spacing) * 10) !important;
+        padding-block: calc(var(--spacing) * 3) !important;
+    }
+    .p-toolbar {border:0px solid transparent !important;}
+    .p-toolbar h4 {margin:0px !important;}
+    .p-dialog-header {border-bottom: 1px solid var(--surface-border) !important;}
+}
