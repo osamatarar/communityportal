@@ -1,0 +1,14 @@
+<div class="flex justify-between items-center w-full">
+  <h4 class="m-0">Individual</h4>
+  <!-- <p-button label="Change Plan" severity="contrast" icon="pi pi-arrow-right-arrow-left"/> -->
+
+  
+<div class="card flex justify-center">
+    <p-selectbutton [options]="stateOptions"
+                    [(ngModel)]="value"
+                     optionLabel="label" 
+                     optionValue="value" 
+                     aria-labelledby="basic"
+                    (onChange)="onBillingChange($event)" />
+</div>
+</div>
