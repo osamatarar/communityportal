@@ -12,13 +12,13 @@
             [totalRecords]="total"
         >
             <ng-template #caption>
-                <div class="flex items-center justify-between">
+                <div class="flex items-center" [ngClass]="TableHeaderName ? 'justify-between' : 'justify-end'">
                     @if(TableHeaderName)
                     {
                         <h5 class="m-0"> {{TableHeaderName}} </h5>
                     }
 
-                    <p-iconfield style="float: left;">
+                    <p-iconfield>
                         <p-inputicon styleClass="pi pi-search" />
                         <input pInputText type="text" (input)="onGlobalFilter($event)" placeholder="Search..." />
                     </p-iconfield>

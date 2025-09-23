@@ -1,0 +1,48 @@
+<div class="grid grid-cols-1 md:grid-cols-2 h-screen">
+    <!-- Left Side: Form -->
+    <div class="overflow-y-auto flex flex-col justify-center p-6">
+        <button pButton type="button" icon="pi pi-arrow-left"
+            class="absolute top-6 left-6 p-button-outlined p-button-rounded p-button-secondary w-10 h-10">
+        </button>
+        <div class="w-full max-w-[380px] mx-auto">
+            <h2 class="text-2xl font-bold mb-6 mt-16">Sign up as a Community Member</h2>
+            <form class="space-y-4">
+                <div class="flex flex-col gap-2">
+                    <label for="fullname">Full Name</label>
+                    <input id="fullname" type="text" pInputText class="w-full" />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="email">Email address</label>
+                    <input id="email" type="email" pInputText class="w-full" />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="text" pInputText class="w-full" />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="blood">Blood Type</label>
+                    <p-select [options]="bloodTypes" optionLabel="label" optionValue="value" class="w-full"></p-select>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="marital">Marital Status</label>
+                    <p-select [options]="maritalStatuses" optionLabel="label" optionValue="value" class="w-full"></p-select>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="password">Change Password</label>
+                    <input id="password" type="password" pInputText class="w-full" />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="confirm">Confirm Password</label>
+                    <input id="confirm" type="password" pInputText class="w-full" />
+                </div>
+                <p-button label="Submit" severity="contrast" [rounded]="true" class="block w-full"></p-button>
+                <p class="text-center text-sm text-gray-600 mt-3">
+                    Already have an account?
+                    <a routerLink="/login" class="text-blue-600 hover:underline">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <!-- Right Side Image (hidden on small screens) -->
+    <app-rightimgside></app-rightimgside>
+</div>

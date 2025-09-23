@@ -1,0 +1,12 @@
+<div>
+  @for (file of uploadedFiles; track file) {
+    <div class="p-2 flex items-center gap-6">
+      <img [src]="file.objectURL"
+           alt="preview"
+           width="100"
+           height="100"
+           class="rounded shadow cursor-pointer"
+           (click)="onImageClick()" />
+    </div>
+  }
+</div>

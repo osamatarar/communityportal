@@ -6,6 +6,7 @@ import { EventComponent } from "./components/events/event.component";
 import { VenuesComponent } from "./components/venues/venues.component";
 import { HospitalsComponent } from "./components/hospitals/hospitals.component";
 import { ProjectDetailComponent } from "./components/projects/project-detail/project-detail.component";
+import { UserProfileComponent } from "./components/userprofile/userprofile.component";
 
 export default [
    { path: 'dropdowndata', component: DropdownDataComponent },
@@ -15,5 +16,6 @@ export default [
    { path: 'event', component: EventComponent},
    { path: 'venue', component: VenuesComponent},
    { path: 'hospital', component: HospitalsComponent},
+   { path: 'userprofile', component :UserProfileComponent },
    { path: '**', redirectTo: '/notfound' }
 ] as Routes;
