@@ -1,0 +1,37 @@
+     
+     
+     <p-toolbar >
+        <ng-template #start>
+        <core-dropdown
+          url="generic/CommonReference"
+          label="Please select the dropdown for screen [ScreenName - DropdownName]"
+          optionLabel="Description"
+          [(ngModel)]="selectValue"
+          (selectedObjectChange)="onSelectionChange($event)"
+       /> </ng-template> 
+      @if(selectValue>0){
+        <ng-template #end>
+            <p-button label="New" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+        </ng-template>} 
+    </p-toolbar>
+    <br/>
+    @if(selectValue>0){
+    <core-table [TableSPName]="'GetReferenceType'"
+                [SPParams]="{ReferenceID:selectValue}"
+                [TableHeaderName]="selectedReferenceType"
+                [Columns]="Columns"  
+                [Actions]="Actions"
+                (actionClicked)="onActionTriggered($event)">
+    </core-table>
+
+    <dynamic-form [apiName]="'generic/CommonReferenceType'"
+                  [ShowDialog]="ShowDialog" 
+                  [HeaderName]="selectedReferenceType"
+                  [config]="FormConfig"
+                  [patchData]="pathFormValue"
+                  (toggleDialog)="toggleDialog($event)">
+    </dynamic-form>}
+   
+ <p-confirmdialog [style]="{ width: '450px' }" />
+
+

@@ -1,0 +1,117 @@
+<p-dialog [(visible)]="ShowDialog" [style]="{ width: '950px' }" [header]="HeaderName" [modal]="true">
+            <ng-template #content>
+                <p-fluid>
+   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Group rendering -->
+    @for (group of getGroups(config.controls); track group.name) {
+      @if (group.name !== 'fullWidth') {
+        <div class="flex flex-col md:flex-row gap-6">
+          @for (field of group.controls; track field.name) {
+
+            @if (!field.hidden) {
+            <div class="flex flex-wrap  w-full add-space">
+            @if(field.type !== 'select') {<label [for]="field.name">{{ field.label }} @if(field.requiredSymbol){<span >[*]</span> } </label> }
+              <!-- Input types -->
+              @if (field.type === 'text' || field.type === 'email' || field.type === 'number') {
+                <input 
+                  [readOnly]="field.readonly"
+                  pInputText 
+                  [id]="field.name" 
+                  [formControlName]="field.name" 
+                  [type]="field.type" />
+              }
+
+              @else if (field.type === 'textarea') {
+                <textarea 
+                  pInputTextarea 
+                  [id]="field.name" 
+                  rows="4" 
+                  [formControlName]="field.name"></textarea>
+              }
+
+              @else if (field.type === 'date') {
+                <div class="w-full">
+                    <p-datepicker 
+                     appendTo="body"
+                    [formControlName]="field.name" 
+                    [iconDisplay]="'input'" 
+                    [showIcon]="true" 
+                    [showTime]="field.timeOnly || false"
+                    [inputId]="field.name">
+                    </p-datepicker>
+                </div>
+                }
+
+               @else if(field.type === 'select'){
+                <core-dropdown
+                 [url]="field.url || ''"
+                 [label]="field.label || ''"
+                 optionLabel="Name"
+                 [formControlName]="field.name"
+     
+                 />
+              }
+             <!-- Error message -->
+              @if (form.get(field.name)?.invalid && form.get(field.name)?.touched) {
+                <small class="p-error">
+                  {{ getErrorMessage(field.name) }}
+                </small>
+              }
+            </div>
+           }
+          }
+        </div>
+      }
+    }
+
+    <!-- Full width fields -->
+    @for (field of getFullWidth(config.controls); track field.name) {
+
+     
+      <div class="flex flex-wrap w-full">
+
+
+          @if(field.type !== 'select') { <label [for]="field.name">{{ field.label }} @if(field.requiredSymbol){<span >[*]</span> }</label>}
+
+        @if (field.type === 'textarea') {
+          <textarea 
+            pInputTextarea 
+            [id]="field.name" 
+            rows="4" 
+            [formControlName]="field.name"></textarea>
+        }
+         @else if(field.type === 'select'){
+                <core-dropdown
+                 [url]="field.url || ''"
+                 [label]="field.label || ''"
+                 optionLabel="Name"
+                 [formControlName]="field.name"
+     
+                 />
+              }
+        @else {
+          <input 
+            pInputText 
+            [id]="field.name" 
+            [type]="field.type" 
+            [formControlName]="field.name" />
+        }
+
+        <!-- Error message -->
+        @if (form.get(field.name)?.invalid && form.get(field.name)?.touched) {
+          <small class="p-error">
+            {{ getErrorMessage(field.name) }}
+          </small>
+        }
+      </div>
+    }
+  </form>
+</p-fluid>
+</ng-template>
+            <ng-template #footer>
+                <p-button label="Cancel" icon="pi pi-times" text (click)="hideDialog()" />
+                <p-button label="Save" icon="pi pi-check" (click)="onSubmit()" />
+            </ng-template>
+</p-dialog>
+
+    <p-toast />
