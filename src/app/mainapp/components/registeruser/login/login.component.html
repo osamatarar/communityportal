@@ -16,19 +16,23 @@
                 <h2 class="text-2xl font-bold mb-6 mt-16">Log in to your account</h2>
                 <p>Continue your journey of making an impact — welcome back to the community.</p>
             </div>
-            <form class="space-y-4">
+            <form class="space-y-4" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+           
                 <div class="flex flex-col gap-2">
-                    <label for="email">Email address</label>
-                    <input id="email" type="email" pInputText class="w-full" />
+                    <label for="Email">Email address</label>
+                    <input id="Email" type="Email" pInputText class="w-full" formControlName="Email" />
+                    <small *ngIf="profileForm.get('Email')?.invalid && profileForm.get('Email')?.touched" class="text-red-600">
+                    Enter a valid Email
+                    </small>
                 </div>
                 <div class="flex flex-col gap-2 mb-8">
                     <label for="password">Password</label>
-                    <input id="password" type="password" pInputText class="w-full" />
+                    <input id="password" type="password" formControlName="Password" pInputText class="w-full" />
                     <div class="w-full flex flex-col text-end">
                         <a href="/forgotpass" class="text-blue-600 hover:underline">Forgot password?</a>
                     </div>
                 </div>
-                <p-button label="Submit" severity="contrast" [rounded]="true" class="block w-full"></p-button>
+                <p-button label="Submit" type="submit" severity="contrast" [rounded]="true" class="block w-full"></p-button>
                 <p class="text-center text-sm text-gray-600 mt-3">
                     Don’t have an account?
                     <a href="/register" class="text-blue-600 hover:underline">Sign up</a>
@@ -39,3 +43,4 @@
     <!-- Right Side Image (hidden on small screens) -->
     <app-rightimgside></app-rightimgside>
 </div>
+<p-toast />

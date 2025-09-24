@@ -5,12 +5,19 @@ import { LoaderService } from './../services/loaderService';
 
 export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   const loadingService = inject(LoaderService);
+    const token = localStorage.getItem('authToken');
   const skipLoaderByHeader = req.headers.get('X-Skip-Loader') === 'true';
   if (skipLoaderByHeader) {
     req = req.clone({
-      headers: req.headers.delete('X-Skip-Loader')
+      headers: req.headers.delete('X-Skip-Loader'),
     });
   }
+
+    req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
 
 if (!skipLoaderByHeader) {
     loadingService.show();

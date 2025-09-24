@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { StyleClassModule } from 'primeng/styleclass';
 import { AppConfigurator } from './app.configurator';
@@ -80,7 +80,7 @@ export class AppTopbar {
     items!: MenuItem[];
     dropdownOpen = false;
 
-    constructor(public layoutService: LayoutService) {}
+    constructor(public layoutService: LayoutService,private router: Router) {}
 
     toggleDarkMode() {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
@@ -100,8 +100,7 @@ export class AppTopbar {
     }
 
     logout() {
-        // 👉 add your real logout logic here
-        console.log('Logging out...');
-        //this.router.navigate(['/login']);
+          localStorage.removeItem('authToken');
+            this.router.navigate(['/login']);
     }
 }

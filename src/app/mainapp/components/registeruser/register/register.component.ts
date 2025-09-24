@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
@@ -9,6 +9,10 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 
 import { RightimgsideComponent } from '../rightimgside/rightimgside.component';
 import { CoreDropdownComponent } from '@/core/components/core.dropdown';
+import { GenericHttpService } from '@/services/genericHttpSerivce';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-register',
@@ -26,13 +30,16 @@ import { CoreDropdownComponent } from '@/core/components/core.dropdown';
         FloatLabelModule,
         // Custom
         RightimgsideComponent,
-        CoreDropdownComponent
+        CoreDropdownComponent,
+        ToastModule
     ]
 })
 export class RegisterComponent  {
- profileForm: FormGroup;
-
-constructor(private fb: FormBuilder) {
+    profileForm: FormGroup;
+    httpService: any = inject(GenericHttpService);
+    messageService= inject(MessageService);
+    
+    constructor(private fb: FormBuilder, private router: Router) {
     this.profileForm = this.fb.group(
       {
         FullName: ['', Validators.required],
@@ -41,7 +48,7 @@ constructor(private fb: FormBuilder) {
         BloodTypeId: [null, Validators.required],
         MaritalTypeId: [null, Validators.required],
         Password: ['', [Validators.minLength(6)]],
-
+        AccountType:[26],
         confirmPassword: [''],
       },
       { validators: this.passwordMatchValidator }
@@ -49,16 +56,28 @@ constructor(private fb: FormBuilder) {
   }
 
   passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
-    const password = group.get('password')?.value;
+    const password = group.get('Password')?.value;
     const confirm = group.get('confirmPassword')?.value;
     return password && confirm && password !== confirm ? { passwordMismatch: true } : null;
   }
 
   onSubmit() {
     if (this.profileForm.valid) {
-      console.log('Form Submitted:', this.profileForm.value);
+         this.httpService.post('user/register',this.profileForm.value).subscribe((data: any) => {
+              if (data.IsSuccess) {
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User Created Successfully' });
+               setTimeout(() => {
+                  this.gotoLogin();
+               }, 5000);
+              
+              }
+          });
     } else {
       this.profileForm.markAllAsTouched();
     }
+  }
+
+  gotoLogin(){
+   this.router.navigate(['/login']);
   }
 }
