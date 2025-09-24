@@ -5,23 +5,25 @@ import { SelectButton } from "primeng/selectbutton";
 import { FormsModule } from '@angular/forms';
 import { ProgressBar } from "primeng/progressbar";
 import { Button } from "primeng/button";
-
+import { CardModule } from 'primeng/card';
+import { TagModule } from 'primeng/tag';
+import { FluidModule } from 'primeng/fluid';
 @Component({
-  selector: 'upcomming-event',
-  standalone: true,
-  imports: [CommonModule, TabsModule, SelectButton, FormsModule, ProgressBar, Button],
-  templateUrl: './upcommingevent.component.html',
-
+    selector: 'upcomming-event',
+    standalone: true,
+    imports: [CommonModule, TabsModule, SelectButton, FormsModule, ProgressBar, Button, CardModule, TagModule, FluidModule],
+    templateUrl: './upcommingevent.component.html'
 })
-export class UpCommingEventsComponent { 
-    stateOptions: any[] = [{ label: 'Free', value: 'free' },{ label: 'Paid', value: 'paid' }];
+export class UpCommingEventsComponent {
+    stateOptions: any[] = [
+        { label: 'Free', value: 'free' },
+        { label: 'Paid', value: 'paid' }
+    ];
 
     value: string = 'Free';
 
-
- onBillingChange(event: any) {
-
-   // alert('Selected Event type:'+ event.value); 
-    // event.value → 'Free' or 'Paid'
-  }
+    onBillingChange(event: any) {
+        // alert('Selected Event type:'+ event.value);
+        // event.value → 'Free' or 'Paid'
+    }
 }
