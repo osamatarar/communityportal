@@ -1,0 +1,23 @@
+.RSide {
+    position: fixed;
+    right:0px;
+    bottom:0px;
+    height: 100vh;
+    width: 50%;
+    background-color: #15362D;
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+}
+.RSide h3 {
+    color: white;
+}
+.RSide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}

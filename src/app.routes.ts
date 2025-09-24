@@ -6,6 +6,9 @@ import { Landing } from './app/pages/landing/landing';
 import { Notfound } from './app/pages/notfound/notfound';
 import { RegisterComponent } from '@/mainapp/components/registeruser/register/register.component';
 import { LoginComponent } from '@/mainapp/components/registeruser/login/login.component';
+import { ForgotpassComponent } from '@/mainapp/components/registeruser/forgotpass/forgotpass.component';
+import { ResetpassComponent } from '@/mainapp/components/registeruser/resetpass/resetpass.component';
+import { RecoveryComponent } from '@/mainapp/components/registeruser/recovery/recovery.component';
 
 export const appRoutes: Routes = [
     {
@@ -21,6 +24,9 @@ export const appRoutes: Routes = [
     },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'forgotpass', component: ForgotpassComponent },
+    { path: 'resetpass', component: ResetpassComponent },
+    { path: 'recovery', component: RecoveryComponent },
     { path: 'landing', component: Landing },
     { path: 'notfound', component: Notfound },
     { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes') },
