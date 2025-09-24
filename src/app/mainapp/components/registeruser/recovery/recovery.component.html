@@ -13,25 +13,18 @@
                 </svg>
             </div>
             <div class="w-full flex flex-col text-center mb-8">
-                <h2 class="text-2xl font-bold mb-6 mt-16">Log in to your account</h2>
-                <p>Continue your journey of making an impact — welcome back to the community.</p>
+                <h2 class="text-2xl font-bold mb-6 mt-16">Authenticate Your Account</h2>
+                <p>Please enter the code sent to your email.</p>
             </div>
             <form class="space-y-4">
-                <div class="flex flex-col gap-2">
-                    <label for="email">Email address</label>
-                    <input id="email" type="email" pInputText class="w-full" />
-                </div>
-                <div class="flex flex-col gap-2 mb-8">
-                    <label for="password">Password</label>
-                    <input id="password" type="password" pInputText class="w-full" />
-                    <div class="w-full flex flex-col text-end">
-                        <a href="/forgotpass" class="text-blue-600 hover:underline">Forgot password?</a>
-                    </div>
+                <div class="flex flex-col justify-center text-center gap-2 mb-8">
+                    <label for="otp">Enter Code</label>
+                    <p-inputotp [integerOnly]="true" size="large" class="w-full justify-center" />
                 </div>
                 <p-button label="Submit" severity="contrast" [rounded]="true" class="block w-full"></p-button>
                 <p class="text-center text-sm text-gray-600 mt-3">
-                    Don’t have an account?
-                    <a href="/register" class="text-blue-600 hover:underline">Sign up</a>
+                    Code Not Received?
+                    <a href="/" class="text-blue-600 hover:underline">Resend Code</a>
                 </p>
             </form>
         </div>

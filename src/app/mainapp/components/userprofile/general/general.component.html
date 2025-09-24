@@ -1,53 +1,48 @@
 <p-fluid>
-
-    <div class="flex">
-    <div class="card flex flex-col gap-6 w-full">
-           <div class="font-semibold text-xl">Profile Picture</div>
-                <div class="flex flex-wrap">
-                 <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-6" size="xlarge" shape="circle" />
-                </div>
+    <div class="flex flex-col gap-6 w-full pt-8">
+        <div class="font-semibold text-xl">Profile Picture</div>
+        <div class="flex flex-wrap">
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-6" size="xlarge" shape="circle" />
+        </div>
+    </div>
+    <div class="flex flex-col gap-6 w-full pt-8">
+        <div class="font-semibold text-xl">Profile Info</div>
+        <div class="flex flex-col md:flex-row gap-6">
+            <div class="flex flex-wrap gap-2 w-full">
+                <label for="firstname2">Firstname</label>
+                <input pInputText id="firstname2" type="text" />
             </div>
-     </div>
-
-<div class="flex">
-    <div class="card flex flex-col gap-6 w-full">
-                <div class="font-semibold text-xl">Profile Info</div>
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="flex flex-wrap gap-2 w-full">
-                        <label for="firstname2">Firstname</label>
-                        <input pInputText id="firstname2" type="text" />
-                    </div>
-                    <div class="flex flex-wrap gap-2 w-full">
-                        <label for="lastname2">Email Address</label>
-                        <input pInputText id="lastname2" type="text" />
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row gap-6">
-                   <div class="flex flex-wrap gap-2 w-full">
-                        <label for="zip">Phone Number</label>
-                        <input pInputText id="zip" type="text" />
-                    </div>
-                        <div class="flex flex-wrap gap-2 w-full">
-                       
-                    </div>
-                </div>
+            <div class="flex flex-wrap gap-2 w-full">
+                <label for="lastname2">Email Address</label>
+                <input pInputText id="lastname2" type="text" />
             </div>
-     </div>
-
-    <div class="flex">
-    <div class="card flex flex-col gap-6 w-full">
-                <div class="font-semibold text-xl">Change Passowrd</div>
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="flex flex-wrap gap-2 w-full">
-                        <label for="firstname2">Password</label>
-                        <input pInputText id="firstname2" type="text" />
-                    </div>
-                    <div class="flex flex-wrap gap-2 w-full">
-                        <label for="lastname2">Confirm Password</label>
-                        <input pInputText id="lastname2" type="text" />
-                    </div>
-                </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-6">
+            <div class="flex flex-wrap gap-2 w-full">
+                <label for="zip">Phone Number</label>
+                <input pInputText id="zip" type="text" />
             </div>
-     </div>
-     <p-button  severity="contrast"> Update</p-button>
+                <div class="flex flex-wrap gap-2 w-full">
+
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col gap-6 w-full pt-8">
+        <div class="font-semibold text-xl">Change Passowrd</div>
+        <div class="flex flex-col md:flex-row gap-6">
+            <div class="flex flex-wrap gap-2 w-full">
+                <label for="firstname2">Password</label>
+                <input pInputText id="firstname2" type="text" />
+            </div>
+            <div class="flex flex-wrap gap-2 w-full">
+                <label for="lastname2">Confirm Password</label>
+                <input pInputText id="lastname2" type="text" />
+            </div>
+        </div>
+    </div>
 </p-fluid>
+<div class="flex p-footer">
+    <div class="flex flex-row justify-end gap-2 w-full pt-6">
+        <p-button label="Update" severity="contrast" [rounded]="true"></p-button>
+    </div>
+</div>

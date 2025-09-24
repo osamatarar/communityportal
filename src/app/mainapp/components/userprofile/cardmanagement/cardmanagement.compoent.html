@@ -1,0 +1,22 @@
+<p-toolbar >
+        <ng-template #start> <h4> {{selectedReferenceType}} </h4>
+        </ng-template>
+        <ng-template #end>
+            <p-button [rounded]="true" label="New Card" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+        </ng-template>
+</p-toolbar>
+    <core-table [TableSPName]="'GetCards'"
+                [Columns]="Columns"
+                [Actions]="Actions"
+                (actionClicked)="onActionTriggered($event)">
+    </core-table>
+
+    <dynamic-form [apiName]="'generic/UmCard'"
+                  [ShowDialog]="ShowDialog"
+                  [HeaderName]="'New Card Info'"
+                  [config]="FormConfig"
+                  [patchData]="pathFormValue"
+                  (toggleDialog)="toggleDialog($event)">
+    </dynamic-form>
+
+ <p-confirmdialog [style]="{ width: '450px' }" />
