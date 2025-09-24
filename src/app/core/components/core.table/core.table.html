@@ -48,12 +48,12 @@
                         <td [style]="col.style">
                          @if (col.type === 'date') {
                                 {{ data[col.field] | date:'dd-MM-yyyy' }}
-                                } @else if(col.field != 'DisableEnable'){
+                                } @else if(col.field != 'Active'){
                                 {{ data[col.field] }}
                              }
-                        @if (col.field === 'DisableEnable') {
+                        @if (col.field === 'Active') {
 
-                            <p-toggleswitch (onChange)="onToggleChange($event.checked)" [(ngModel)]="data[col.field]" />
+                            <p-toggleswitch (onChange)="onToggleChange(data)" [(ngModel)]="data[col.field]" />
 
                         }
                     }

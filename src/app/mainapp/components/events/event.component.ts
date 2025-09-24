@@ -43,7 +43,7 @@ export class EventComponent {
           placeholder: 'Enter FullName',
           validators: { required: true, minLength: 3 },
           value : "0002",
-          readonly : true,
+          readonly : false,
           group: 'first'
         },
         {
@@ -76,46 +76,83 @@ export class EventComponent {
         {
           type: 'text' as const,
           name: 'Location',
-          label: 'Project Location',
+          label: 'Event Location',
           placeholder: 'Enter Project Location',
           group: 'thirdrow' ,
           fullWidth: false
         },
         {
-          type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Main Community',
-          placeholder: 'Select Community',
-          url : "User/GetReferenceTypes?id=6",
+          type: 'file' as const,
+          name: 'documentId',
+          label: 'Event Logo/Picture',
           group: 'thirdrow' ,
           fullWidth: false
         },
         {
-          type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Sub Community',
-          placeholder: 'Select SubComunity',
-          url : "User/GetReferenceTypes?id=6",
+          type: 'text' as const,
+          name: 'MinParticipantsRequired',
+          label: 'Min. Participants Required',
+          placeholder: 'Min. Participants Required',
           group: 'fourthrow' ,
           fullWidth: false
         },
-
         {
-          type: 'textarea' as const,
-          name: 'Description',
-          label: 'Project Description',
-          placeholder: 'Text  here....',
+          type: 'text' as const,
+          name: 'MaxParticipants',
+          label: 'Max. Participants',
+          placeholder: 'Max. Participants',
+          group: 'fourthrow' ,
+          fullWidth: false
+        },
+        {
+          type: 'checkbox' as const,
+          name: 'Gender',
+          label: 'Gender',
+          placeholder: 'Gender',
+          url : "User/GetReferenceTypes?id=3",
           group: 'fifthrow' ,
-          fullWidth: true
+          fullWidth: false
+        },
+        {
+          type: 'number' as const,
+          name: 'MinAgeLimit',
+          label: 'Age Limit Min',
+          placeholder: 'Age Limit Min',
+          group: 'sixthrow' ,
+          fullWidth: false
+        },
+        {
+          type: 'number' as const,
+          name: 'MaxAgeLimit',
+          label: 'Age Limit Max',
+          placeholder: 'Limit Max',
+          group: 'sixthrow' ,
+          hidden : false
+        },
+         {
+          type: 'text' as const,
+          name: 'DraftEmail',
+          label: 'Draft Email',
+          placeholder: 'Draft Email',
+          group: 'seventhrow' ,
+          hidden : false
         },
         {
           type: 'text' as const,
-          name: 'AccountTypeId',
-          label: 'Description',
-          placeholder: 'Enter Description',
-          hidden : true
+          name: 'DraftSMS',
+          label: 'Draft SMS',
+          placeholder: 'Draft SMS',
+          group: 'seventhrow' ,
+          hidden : false
+        },
+        {
+          type: 'textarea' as const,
+          name: 'SpecialInstructions',
+          label: 'Special Instructions For Participants',
+          placeholder: 'SpecialInstructions',
+          group: 'eighthrow' ,
+          hidden : false
         }
-
       ]
     }
 

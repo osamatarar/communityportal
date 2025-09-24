@@ -8,31 +8,28 @@
         <!-- bind the real image url here -->
         <img [src]="project.imageUrl" alt="project image" class="image-placeholder" />
         <div class="image-footer">
-          <span class="p-text-secondary">{{ project.group }}</span>
-          <span class="project-id">{{ project.code }}</span>
+          <span class="project-id">{{ project.Code }}</span>
         </div>
       </div>
 
       <!-- RIGHT : Text Content -->
       <div class="content-box">
-        <h2 class="title">{{ project.title }}</h2>
+        <h2 class="title">{{ project.Title }}</h2>
 
         <div class="info">
           <i class="pi pi-calendar"></i>
-          <span>{{ project.startDate }} – {{ project.endDate }}</span>
+          <span>{{ project.StartDate | date:'dd-MM-yyyy'  }} – {{ project.EndDate | date:'dd-MM-yyyy'  }}</span>
         </div>
 
         <div class="info">
           <i class="pi pi-map-marker"></i>
-          <span>{{ project.location }}</span>
+          <span>{{ project.Location }}</span>
         </div>
 
         <p-divider class="divider"></p-divider>
 
         <p class="description">
-          {{ project.description }}
-          <br /><br />
-          {{ project.details }}
+          {{ project.Description }}
         </p>
       </div>
 

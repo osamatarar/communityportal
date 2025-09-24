@@ -67,6 +67,16 @@
                                             </p-fileupload>
                                         </div>
                                 }
+                                @else if(field.type ==='checkbox'){
+                                    <div class="w-full">
+                                        <core-checkbox  class="w-full"
+                                            [url]="field.url || ''"
+                                            [label]="field.label || ''"
+                                            optionLabel="Name"
+                                            [formControlName]="field.name"
+                                            />
+                                        </div>
+                                        }
                                 <!-- Error message -->
                                 @if (form.get(field.name)?.invalid && form.get(field.name)?.touched) {
                                     <small class="p-error">
@@ -98,6 +108,7 @@
                             [formControlName]="field.name"
                             />
                         }
+
                         @else {
                             <input
                                 pInputText

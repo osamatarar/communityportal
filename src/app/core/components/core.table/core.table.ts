@@ -221,7 +221,7 @@ export class CoreTable implements OnChanges {
 
         });
     }
-    onToggleChange(value: boolean) {
+    onToggleChange(value: any) {
     this.checkedChange.emit(value);
   }
 

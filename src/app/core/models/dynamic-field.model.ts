@@ -1,4 +1,4 @@
-export type FieldType = 'text'|'email'|'number'|'date'|'select'|'radio'|'checkbox'|'textarea' | 'file';
+export type FieldType = 'text'|'email'|'number'|'date'|'select'|'radio'|'checkbox'|'textarea' | 'file' | 'checkbox';
 
 
 export interface FieldOption {
@@ -25,13 +25,13 @@ export interface FieldConfig {
   placeholder?: string;
   options?: { label: string; value: any }[];
   validators?: any;
-  fullWidth?: boolean;   
+  fullWidth?: boolean;
   group?: string;
   hidden?: boolean;
   requiredSymbol?: boolean;
-  url?:string; 
-  readonly?:boolean; 
-  value?:string;     
+  url?:string;
+  readonly?:boolean;
+  value?:string;
   timeOnly? : boolean;
 }
 
@@ -42,8 +42,8 @@ controls: FieldConfig[];
 }
 
 export interface TableAction {
-  icon: string;                 
-  severity?: string;           
-  action: string;               
-  handler?: (row: any) => void;    
+  icon: string;
+  severity?: string;
+  action: string;
+  handler?: (row: any) => void;
 }

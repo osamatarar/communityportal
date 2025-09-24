@@ -28,7 +28,7 @@ export class ProjectComponent {
     [
       { field: 'Code', header: 'Code', sortable: true, style: 'min-width:10rem' },
       { field: 'Title', header: 'Title', sortable: true, style: 'min-width:16rem' },
-      { field: 'Community', header: 'Community', sortable: true, style: 'min-width:16rem' },
+      { field: 'ComunityName', header: 'Community', sortable: true, style: 'min-width:16rem' },
       { field: 'Location', header: 'Location', sortable: false, style: 'min-width:16rem', },
       { field: 'StartDate', header: 'Start Date', sortable: false, style: 'min-width:15rem', type:'date' },
       { field: 'EndDate', header: 'End Date', sortable: false, style: 'min-width:15rem',type:'date'  },
@@ -40,19 +40,18 @@ export class ProjectComponent {
     controls:   [
         {
           type: 'text' as const,
-          name: 'ID',
-          label: 'Event ID',
-          placeholder: 'Enter Event Id',
+          name: 'Code',
+          label: 'Code',
+          placeholder: 'Enter Code',
           validators: { required: true },
           value : "80",
-          readonly : true,
           group: 'first'
         },
         {
           type: 'text' as const,
-          name: 'Name',
-          label: 'Event Name',
-          placeholder: 'Enter Event Name',
+          name: 'Title',
+          label: 'Project Title',
+          placeholder: 'Enter Project Name',
           validators: { required: true, minLength: 3 },
           group: 'first'
         },
@@ -106,7 +105,7 @@ export class ProjectComponent {
           name: 'documentId',
           label: 'Project Picture',
           group: 'fourthrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'textarea' as const,
@@ -116,7 +115,7 @@ export class ProjectComponent {
           group: 'fifthrow' ,
           fullWidth: true
         },
-      
+
         {
           type: 'text' as const,
           name: 'AccountTypeId',
