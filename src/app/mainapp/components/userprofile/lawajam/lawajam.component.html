@@ -1,9 +1,7 @@
 <div class="flex justify-between items-center w-full">
   <h4 class="m-0">Individual</h4>
   <!-- <p-button label="Change Plan" severity="contrast" icon="pi pi-arrow-right-arrow-left"/> -->
-
-  
-<div class="card flex justify-center">
+   <div class="card flex justify-center">
     <p-selectbutton [options]="stateOptions"
                     [(ngModel)]="value"
                      optionLabel="label" 
@@ -12,3 +10,9 @@
                     (onChange)="onBillingChange($event)" />
 </div>
 </div>
+
+<div>
+  <i class="pi pi-arrow-right-arrow-left"></i>  <span> Your current Plan is individual which will be billed $120 / annually. Your next billing date is 3 November 2026 </span>
+</div>
+
+<lawajam-pricing></lawajam-pricing>

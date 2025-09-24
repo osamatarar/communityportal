@@ -4,11 +4,12 @@ import { TabsModule } from 'primeng/tabs';
 import { ButtonModule } from 'primeng/button';
 import { SelectButton } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
+import { LawajamPricing } from './pricingwidget';
 
 @Component({
   selector: 'user-jawam',
   standalone: true,
-  imports: [CommonModule,FormsModule,SelectButton,ButtonModule,TabsModule],
+  imports: [CommonModule,LawajamPricing, FormsModule,SelectButton,ButtonModule,TabsModule],
   templateUrl: './lawajam.component.html',
 
 })
