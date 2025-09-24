@@ -1,0 +1,17 @@
+
+
+     <p-toolbar >
+        <ng-template #start> <h4> {{selectedReferenceType}} </h4>
+        </ng-template>
+    </p-toolbar>
+    <core-table [TableSPName]="'GetHospitalRequests'"
+                [Columns]="Columns"
+                [Actions]="Actions"
+                (actionClicked)="onActionTriggered($event)">
+    </core-table>
+
+
+
+ <p-confirmdialog [style]="{ width: '450px' }" />
+
+

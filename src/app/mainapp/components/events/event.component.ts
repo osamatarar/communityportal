@@ -15,7 +15,7 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
   standalone: true,
   imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
   templateUrl: './event.component.html'
-  
+
 })
 
 export class EventComponent {
@@ -23,17 +23,16 @@ export class EventComponent {
     selectedReferenceType :string ="Event List";
     pathFormValue : any= null;
 
-    Columns : TableColumn[] = 
+    Columns : TableColumn[] =
     [
-      { field: 'Code', header: 'Code', sortable: true, style: 'min-width:10rem' },
-      { field: 'Title', header: 'Title', sortable: true, style: 'min-width:16rem' },
-      { field: 'Community', header: 'Community', sortable: true, style: 'min-width:16rem' },
-      { field: 'Location', header: 'Location', sortable: false, style: 'min-width:16rem', },
-      { field: 'StartDate', header: 'Start Date', sortable: false, style: 'min-width:15rem', type:'date' },
-      { field: 'EndDate', header: 'End Date', sortable: false, style: 'min-width:15rem',type:'date'  },
-      {  field: 'Status', header: 'Status', sortable: false, style: 'min-width:15rem', },
+
+      { field: 'StartDate', header: 'Creation Date', sortable: false, style: 'min-width:16rem', },
+      { field: 'CreatedBy', header: 'Created By', sortable: false, style: 'min-width:15rem', type:'date' },
+      { field: 'Name', header: 'Event Name', sortable: true, style: 'min-width:16rem' },
+      { field: 'Location', header: 'Event Location', sortable: true, style: 'min-width:16rem' },
+      {  field: 'Gender', header: 'Gender', sortable: false, style: 'min-width:15rem', },
     ];
-    
+
     FormConfig = {
     formName: "eventForm",
     controls:   [
@@ -45,7 +44,7 @@ export class EventComponent {
           validators: { required: true, minLength: 3 },
           value : "0002",
           readonly : true,
-          group: 'first' 
+          group: 'first'
         },
         {
           type: 'text' as const,
@@ -53,7 +52,7 @@ export class EventComponent {
           label: 'Event Name',
           placeholder: 'Enter Title',
           validators: { required: true, minLength: 3 },
-          group: 'first' 
+          group: 'first'
         },
         {
           type: 'date' as const,
@@ -63,7 +62,7 @@ export class EventComponent {
           validators: { "required": true } ,
           requiredSymbol : true,
           group: 'secondrow',
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'date' as const,
@@ -72,7 +71,7 @@ export class EventComponent {
           placeholder: 'Enter End Dat',
           validators: { required: true },
           group: 'secondrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'text' as const,
@@ -80,7 +79,7 @@ export class EventComponent {
           label: 'Project Location',
           placeholder: 'Enter Project Location',
           group: 'thirdrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'select' as const,
@@ -89,7 +88,7 @@ export class EventComponent {
           placeholder: 'Select Community',
           url : "User/GetReferenceTypes?id=6",
           group: 'thirdrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
         {
           type: 'select' as const,
@@ -98,7 +97,7 @@ export class EventComponent {
           placeholder: 'Select SubComunity',
           url : "User/GetReferenceTypes?id=6",
           group: 'fourthrow' ,
-          fullWidth: false   
+          fullWidth: false
         },
 
         {
@@ -107,16 +106,16 @@ export class EventComponent {
           label: 'Project Description',
           placeholder: 'Text  here....',
           group: 'fifthrow' ,
-          fullWidth: true   
+          fullWidth: true
         },
         {
           type: 'text' as const,
           name: 'AccountTypeId',
           label: 'Description',
           placeholder: 'Enter Description',
-          hidden : true 
+          hidden : true
         }
-        
+
       ]
     }
 
@@ -134,20 +133,20 @@ export class EventComponent {
          this.pathFormValue = {...event.row,  ...this.pathFormValue};
     }
     else if(event.action =='delete')
-    {    
+    {
        this.confirmationService.confirm({
                 message: 'Are you sure you want to delete',
                 header: 'Confirm',
                 icon: 'pi pi-exclamation-triangle',
                 accept: () => {
-                  
-           
+
+
                 }
             });
     }
   }
 
-  
+
 
 
   ShowDialog : boolean =false;

@@ -9,57 +9,44 @@ import { DynamicFormComponent } from '@/core/components/core.form/dynamic-form.c
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
-import { Router } from '@angular/router';
+import { FluidClasses } from 'primeng/fluid';
 
 @Component({
-  selector: 'app-project',
-  standalone: true,
+  selector: 'app-forums',
+  templateUrl: './forums.component.html',
   imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
-  templateUrl: './project.component.html'
 
+  styleUrls: ['./forums.component.css']
 })
-
-export class ProjectComponent {
-    constructor(private confirmationService: ConfirmationService,private router:Router) {}
-    selectedReferenceType :string ="Projects List";
+export class ForumsComponent {
+    constructor(private confirmationService: ConfirmationService) {}
+    selectedReferenceType :string ="All Forums";
     pathFormValue : any= null;
 
     Columns : TableColumn[] =
     [
-      { field: 'Code', header: 'Code', sortable: true, style: 'min-width:10rem' },
+      { field: 'StatusDate', header: 'Status Date', sortable: true, style: 'min-width:10rem' },
+      { field: 'Date', header: 'Date', sortable: true, style: 'min-width:16rem' },
       { field: 'Title', header: 'Title', sortable: true, style: 'min-width:16rem' },
-      { field: 'Community', header: 'Community', sortable: true, style: 'min-width:16rem' },
-      { field: 'Location', header: 'Location', sortable: false, style: 'min-width:16rem', },
-      { field: 'StartDate', header: 'Start Date', sortable: false, style: 'min-width:15rem', type:'date' },
-      { field: 'EndDate', header: 'End Date', sortable: false, style: 'min-width:15rem',type:'date'  },
-      {  field: 'Status', header: 'Status', sortable: false, style: 'min-width:15rem', },
+      { field: 'AgeLimit', header: 'Age Limit', sortable: false, style: 'min-width:16rem', },
+      { field: 'Gender', header: 'Gender', sortable: false, style: 'min-width:15rem', type:'date' },
     ];
 
     FormConfig = {
-    formName: "eventForm",
+    formName: "forumForm",
     controls:   [
         {
           type: 'text' as const,
-          name: 'ID',
-          label: 'Event ID',
-          placeholder: 'Enter Event Id',
-          validators: { required: true },
-          value : "80",
-          readonly : true,
-          group: 'first'
-        },
-        {
-          type: 'text' as const,
-          name: 'Name',
-          label: 'Event Name',
-          placeholder: 'Enter Event Name',
+          name: 'ForumTitle',
+          label: 'Forum Title',
+          placeholder: 'Enter Forum Title',
           validators: { required: true, minLength: 3 },
-          group: 'first'
+          fullwidth: true,
         },
         {
           type: 'date' as const,
           name: 'StartDate',
-          label: 'Project Start Date',
+          label: 'Start Date',
           placeholder: 'Enter Start Date',
           validators: { "required": true } ,
           requiredSymbol : true,
@@ -69,61 +56,21 @@ export class ProjectComponent {
         {
           type: 'date' as const,
           name: 'EndDate',
-          label: 'Project End Date',
+          label: 'End Date',
           placeholder: 'Enter End Dat',
           validators: { required: true },
           group: 'secondrow' ,
           fullWidth: false
         },
-        {
-          type: 'text' as const,
-          name: 'Location',
-          label: 'Project Location',
-          placeholder: 'Enter Project Location',
+          {
+          type: 'number' as const,
+          name: 'StartAge',
+          label: 'Start Age',
+          placeholder: 'Enter Start Age',
+          validators: { required: true },
           group: 'thirdrow' ,
           fullWidth: false
         },
-        {
-          type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Main Community',
-          placeholder: 'Select Community',
-          url : "User/GetReferenceTypes?id=6",
-          group: 'thirdrow' ,
-          fullWidth: false
-        },
-        {
-          type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Sub Community',
-          placeholder: 'Select SubComunity',
-          url : "User/GetReferenceTypes?id=6",
-          group: 'fourthrow' ,
-          fullWidth: false
-        },
-        {
-          type: 'file' as const,
-          name: 'documentId',
-          label: 'Project Picture',
-          group: 'fourthrow' ,
-          fullWidth: false   
-        },
-        {
-          type: 'textarea' as const,
-          name: 'Description',
-          label: 'Project Description',
-          placeholder: 'Text  here....',
-          group: 'fifthrow' ,
-          fullWidth: true
-        },
-      
-        {
-          type: 'text' as const,
-          name: 'AccountTypeId',
-          label: 'Description',
-          placeholder: 'Enter Description',
-          hidden : true
-        }
 
       ]
     }
@@ -153,13 +100,6 @@ export class ProjectComponent {
 
                 }
             });
-    }else if(event.action =='view')
-    {
-        this.router.navigate(
-            ['/app/project-detail'],
-            { queryParams: { id: event.row.ID } }
-        );
-
     }
   }
 
