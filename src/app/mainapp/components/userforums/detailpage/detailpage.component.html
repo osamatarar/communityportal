@@ -1,0 +1,109 @@
+<p-toolbar>
+    <ng-template #start>
+        <p-button icon="pi pi-arrow-left" [rounded]="true" severity="secondary" [text]="true" />
+    </ng-template>
+</p-toolbar>
+<div class="grid grid-cols-12 gap-4 mb-4">
+    <div class="col-span-12 md:col-span-8 lg:col-span-8 p-2">
+        <img class="w-full rounded-xl" [style]="{ height: '280px' }" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" alt="Event Image" />
+    <!-- Card Header with Pin Button -->
+        <div class="flex flex-row gap-4 items-start justify-between mt-4">
+            <div>
+                <h5 class="text-xl font-semibold text-gray-800 two-word-limit" style="margin:0;">Engaging Community</h5>
+                <!-- Card Footer with Stats -->
+                <div class="flex items-center gap-6 pt-4">
+                    <div class="flex items-center">
+                        <i class="pi pi-comments mr-2"></i>
+                        <span class="community-count">1.2k</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="pi pi-calendar mr-2"></i>
+                        <span class="community-count">Jul 14, 2025</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="pi pi-share-alt mr-2"></i>
+                        <span class="community-count">5</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="pi pi-eye mr-2"></i>
+                        <span class="community-count">355K</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p-button label="Invite" severity="contrast" [rounded]="true" icon="pi pi-share-alt" />
+            </div>
+        </div>
+        <!-- Card Content -->
+        <div class="mt-8">
+            <p class="text-gray-700 mt-2">A dedicated participant in community activities.</p>
+        </div>
+        <div class="flex flex-col w-full mt-12">
+            <div class="flex flex-row align-center justify-between w-full">
+                <h5>Comments</h5>
+                <div class="flex justify-end">
+                    <p-selectbutton [options]="[{ label: 'Newest', value: 'newest' }, { label: 'Oldest', value: 'oldest' }]"
+                    optionValue="value" rounded="true">
+                    </p-selectbutton>
+                </div>
+            </div>
+            <div class="flex flex-row gap-8 w-full mt-4">
+                <p-card class="shadow-lg hover:shadow-xl w-full relative border-1 border-solid border-gray-100 hover:border-primary-50 pr-10">
+                    <div class="flex flex-row gap-4 items-center mb-4">
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                        <h5 class="text-xl font-semibold text-gray-800 two-word-limit" style="margin:0;">John Doe</h5>
+                        <span class="text-gray-500">2 hours ago</span>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-gray-700 mt-2">This is a comment from John Doe. Great discussion happening here!</p>
+                    </div>
+                    <div class="flex items-center gap-6 pt-4">
+                        <div class="flex items-center">
+                            <i class="pi pi-comments mr-2"></i>
+                            <span class="community-count">2 replies</span>
+                        </div>
+                        <a pButton type="button" label="Reply" icon="pi pi-reply" severity="secondary" [text]="true" [rounded]="true"></a>
+                    </div>
+                </p-card>
+            </div>
+            <div class="flex flex-row align-center justify-between w-full mt-12">
+                <h5>Your Comment</h5>
+            </div>
+            <div class="flex flex-col gap-8 w-full mt-4">
+                <p-editor [style]="{ height: '140px' }" class="w-full">
+                    <ng-template #header>
+                        <span class="ql-formats">
+                            <button type="button" class="ql-bold" aria-label="Bold"></button>
+                            <button type="button" class="ql-italic" aria-label="Italic"></button>
+                            <button type="button" class="ql-underline" aria-label="Underline"></button>
+                        </span>
+                    </ng-template>
+                </p-editor>
+                <div class="flex justify-end items-end">
+                    <p-button label="Submit" severity="contrast" [rounded]="true" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 md:col-span-4 lg:col-span-4 p-2">
+        <div class="flex flex-col gap-4 mb-8">
+            <h4>Discussion Type</h4>
+            <div>
+                <p-tag value="Public" [rounded]="true" />
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4>Participants</h4>
+            <div>
+                <p-avatar-group class="flex items-center">
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png" shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png" shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png" shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png" shape="circle" />
+                    <p-avatar label="+2" shape="circle" />
+                </p-avatar-group>
+            </div>
+        </div>
+    </div>
+</div>
