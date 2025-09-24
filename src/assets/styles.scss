@@ -3,8 +3,22 @@
 @use './layout/layout.scss';
 @use 'primeicons/primeicons.css';
 @use './demo/demo.scss';
+// :root {
+//     --p-primary-50:  #f0fff4 !important;
+//     --p-primary-100: #e1fee9 !important;
+//     --p-primary-200: #d1fede !important;
+//     --p-primary-300: #c1fdd3 !important;
+//     --p-primary-400: #affcc7 !important;
+//     --p-primary-500: #9dfbbc !important;
+//     --p-primary-600: #7ac593 !important;
+//     --p-primary-700: #59926c !important;
+//     --p-primary-800: #3a6147 !important;
+//     --p-primary-900: #1d3525 !important;
+//     --p-primary-950: #050e08 !important;
+// }
 @layer components {
-    .p-dialog-footer .p-button {
+    .p-dialog-footer .p-button,
+    .p-footer .p-button {
         padding-inline: calc(var(--spacing) * 10) !important;
         padding-block: calc(var(--spacing) * 3) !important;
     }
@@ -12,4 +26,5 @@
     .p-toolbar h4 {margin:0px !important;}
     .p-dialog-header {border-bottom: 1px solid var(--surface-border) !important;}
     .block .p-button {width: 100% !important;padding-block: calc(var(--spacing) * 3) !important;}
+
 }
