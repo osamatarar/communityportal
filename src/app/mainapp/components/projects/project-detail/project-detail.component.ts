@@ -33,13 +33,18 @@ export class ProjectDetailComponent implements OnInit {
       { field: 'InsertDate', header: 'Creation Date', sortable: true, style: 'min-width:16rem' },
       { field: 'StartDate', header: 'Start Date', sortable: false, style: 'min-width:16rem', },
       { field: 'EndDate', header: 'End Date', sortable: false, style: 'min-width:15rem', type:'date' },
-      { field: 'DisableEnable', header: 'Disable/Enable', sortable: false, style: 'min-width:15rem', },
+      { field: 'Active', header: 'Disable/Enable', sortable: false, style: 'min-width:15rem', },
     ];
 
     FormConfig = {
     formName: "eventForm",
     controls:   [
-
+        {
+          type: 'number' as const,
+          name: 'ProjectId',
+          label: 'ProjectId',
+          hidden:true
+        },
         {
           type: 'text' as const,
           name: 'Name',
@@ -84,18 +89,6 @@ export class ProjectDetailComponent implements OnInit {
          event.row.EndDate = new Date(event.row.EndDate);
          this.pathFormValue = {...event.row,  ...this.pathFormValue};
     }
-    else if(event.action =='delete')
-    {
-       this.confirmationService.confirm({
-                message: 'Are you sure you want to delete',
-                header: 'Confirm',
-                icon: 'pi pi-exclamation-triangle',
-                accept: () => {
-
-
-                }
-            });
-    }
   }
 
 
@@ -108,7 +101,7 @@ export class ProjectDetailComponent implements OnInit {
   addNew(){
     this.ShowDialog = !this.ShowDialog;
     this.pathFormValue = {};
-    this.pathFormValue = {AccountType: 9};
+    this.pathFormValue = {ProjectId: +this.projectID};
   }
 
   onSelectionChange(data:any){
@@ -142,13 +135,20 @@ export class ProjectDetailComponent implements OnInit {
     }
 
       fetchProjectDetails(id: number) {
-          this.httpService.getById('generic/CMCampaign',id).subscribe((data: any) => {
+          this.httpService.getById('generic/CMProject',id).subscribe((data: any) => {
               if (data && data.length > 0) {
                   this.project = data[0];
               }
           });
         }
-        onToggleChange(value: boolean) {
-            console.log('Toggle changed:', value);
+        onToggleChange(value: any) {
+             this.httpService.update('generic/CMCampaign',value.ID,value).subscribe((data: any) => {
+              if (data && data.length > 0) {
+                  console.log(data);
+              }
+          });
         }
+
+
+
 }
