@@ -16,6 +16,7 @@ import { CoreDropdownComponent } from '../core.dropdown';
 import { DatePickerModule } from 'primeng/datepicker';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FilePreviewComponent } from '../filepreview/fileperview.component';
+import { CoreCheckBoxComponent } from '../core.checkbox';
 
 
 @Component({
@@ -23,12 +24,12 @@ selector: 'dynamic-form',
 templateUrl: './dynamic-form.component.html',
 styleUrl :'./dynamic-form.css',
 standalone:true,
-imports: [ReactiveFormsModule,FilePreviewComponent, FileUploadModule, ToastModule,CoreDropdownComponent, DatePickerModule, FluidModule, DialogModule, TextareaModule, InputTextModule, ButtonModule, CheckboxModule, RadioButtonModule, InputTextModule],
+imports: [ReactiveFormsModule,FilePreviewComponent, FileUploadModule, ToastModule,CoreDropdownComponent, DatePickerModule, FluidModule, DialogModule, TextareaModule, InputTextModule, ButtonModule, CheckboxModule, RadioButtonModule, InputTextModule,CoreCheckBoxComponent],
 })
 export class DynamicFormComponent implements OnChanges {
-    
+
     httpService: any = inject(GenericHttpService);
-    
+
     @Input() config!: FormConfig;
     @Input() patchData! : any;
 
@@ -54,7 +55,7 @@ export class DynamicFormComponent implements OnChanges {
         }
 
         if (changes['patchData'] && this.form && this.patchData) {
-         this.form.reset();   
+         this.form.reset();
          this.form.patchValue(this.patchData);
         }
         this.loadAttachments();
@@ -71,18 +72,18 @@ export class DynamicFormComponent implements OnChanges {
           {
            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Update Successfully' });
           }});
-        }   
+        }
         else {
            this.httpService.post(this.apiName, this.form.value).subscribe((data:any) => {
           (data.IsSuccess)
           {
            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Save Successfully' });
           }
-        
-        });
-        } 
 
-       
+        });
+        }
+
+
         this.hideDialog();
         this.submitForm.emit(this.form.value);
         } else {
@@ -91,9 +92,9 @@ export class DynamicFormComponent implements OnChanges {
     }
 
 
-    trackByName(_index: number, field: FieldConfig) 
+    trackByName(_index: number, field: FieldConfig)
     { return field.name; }
- 
+
     getErrorMessage(controlName: string) {
         const control = this.form.get(controlName);
         if (!control || !control.errors) return null;
@@ -107,7 +108,7 @@ export class DynamicFormComponent implements OnChanges {
         return 'Invalid value';
    }
 
-    
+
    getGroups(controls: FieldConfig[]) {
     const groups: { name: string; controls: FieldConfig[] }[] = [];
     const grouped = controls.filter(c => !c.fullWidth);
@@ -134,7 +135,7 @@ export class DynamicFormComponent implements OnChanges {
             this.ShowDialog = false;
             this.toggleDialog.emit(this.ShowDialog);
     }
-    
+
     uploadedFiles: any[] = [];
     onUpload(event: any) {
           for (const file of event.files) {

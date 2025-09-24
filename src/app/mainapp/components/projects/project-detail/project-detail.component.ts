@@ -45,6 +45,7 @@ export class ProjectDetailComponent implements OnInit {
           label: 'ProjectId',
           hidden:true
         },
+
         {
           type: 'text' as const,
           name: 'Name',
@@ -52,6 +53,13 @@ export class ProjectDetailComponent implements OnInit {
           placeholder: 'Enter Campaign Name',
           validators: { required: true, minLength: 3 },
           group: 'first'
+        },
+         {
+          type: 'file' as const,
+          name: 'documentId',
+          label: 'Campaign Picture',
+          group: 'first' ,
+          fullWidth: false
         },
         {
           type: 'date' as const,
@@ -71,6 +79,33 @@ export class ProjectDetailComponent implements OnInit {
           validators: { required: true },
           group: 'secondrow' ,
           fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'TotalCost',
+          label: 'Total Cost',
+          placeholder: 'Enter Total Cost',
+          validators: { required: true },
+          group: 'thirdrow' ,
+          fullWidth: false
+        },
+         {
+          type: 'select' as const,
+          name: 'DonationTypeId',
+          label: 'Donation Type',
+          placeholder: 'One Time Donation',
+          url : "User/GetReferenceTypes?id=9",
+          validators: { required: true },
+          group: 'thirdrow' ,
+          fullWidth: false
+        },
+        {
+          type: 'textarea' as const,
+          name: 'Description',
+          label: 'Project Description',
+          placeholder: 'Text  here....',
+          group: 'fourthrow' ,
+          fullWidth: true
         },
 
       ]
@@ -107,22 +142,7 @@ export class ProjectDetailComponent implements OnInit {
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
   }
-    project = {
-    imageUrl: 'assets/images/your-image.jpg',   // replace with your own path
-    group: 'Muslim, Sunni',
-    code: '001',
-    title: 'Project Title',
-    startDate: 'Sep 15',
-    endDate: 'Dec 27, 2025',
-    location: 'New York, NY',
-    description: `Come be part of an exciting community project! This is a fantastic
-                  opportunity for us to connect, share ideas, and inspire one another.
-                  Together, we have the power to create meaningful change.`,
-    details: `Your participation can truly make a difference. We can't wait to see you
-              there and collaborate on something great. Let’s unite our efforts and
-              build a brighter future together. Join us and be a part of this amazing
-              journey. Looking forward to your presence!`
-  };
+  project :any;
   projectID!:number;
   ngOnInit(): void {
       this.route.queryParams.subscribe(params => {
@@ -136,8 +156,8 @@ export class ProjectDetailComponent implements OnInit {
 
       fetchProjectDetails(id: number) {
           this.httpService.getById('generic/CMProject',id).subscribe((data: any) => {
-              if (data && data.length > 0) {
-                  this.project = data[0];
+              if (data.IsSuccess==true) {
+                  this.project = data.Result;
               }
           });
         }
