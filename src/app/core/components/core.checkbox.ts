@@ -87,9 +87,8 @@ export class CoreCheckBoxComponent implements OnInit, ControlValueAccessor {
     }
 
     onSelectionChange(event: any): void {
-        this.selectedValueChange.emit(event?.value[0]);
-        const fullObject = this.options.find((o) => o.code === event?.value[0]);
-        this.selectedObjectChange.emit(fullObject);
+        this.selectedValueChange.emit(event.value);
+        this.selectedObjectChange.emit(event);
     }
 
     // ControlValueAccessor methods

@@ -7,15 +7,15 @@
             <p-button label="All Forums" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
         </ng-template>
     </p-toolbar>
-    <core-table [TableSPName]="'GetProjects'"
+    <core-table [TableSPName]="'GetForums'"
                 [Columns]="Columns"
                 [Actions]="Actions"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
 
-    <dynamic-form [apiName]="'generic/CMProject'"
+    <dynamic-form [apiName]="'generic/CM.Forum'"
                   [ShowDialog]="ShowDialog"
-                  [HeaderName]="'Add new Project'"
+                  [HeaderName]="'New Project'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
                   (toggleDialog)="toggleDialog($event)">

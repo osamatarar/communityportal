@@ -10,6 +10,7 @@ import { UserProfileComponent } from "./components/userprofile/userprofile.compo
 import { UserEventsComponent } from "./components/userEvents/userevent.component";
 import { UserforumsComponent } from "./components/userforums/userforums.component";
 import { DetailpageComponent } from "./components/userforums/detailpage/detailpage.component";
+import { ForumsComponent } from "./components/forums/forums.component";
 
 export default [
     { path: 'dropdowndata', component: DropdownDataComponent },
@@ -19,6 +20,7 @@ export default [
     { path: 'event', component: EventComponent },
     { path: 'venue', component: VenuesComponent },
     { path: 'hospital', component: HospitalsComponent },
+    { path: 'forums', component: ForumsComponent },
     { path: 'userprofile', component: UserProfileComponent },
     { path: 'userevent', component: UserEventsComponent },
     { path: 'userforum', component: UserforumsComponent },
