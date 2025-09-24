@@ -1,0 +1,99 @@
+<p-toolbar>
+    <ng-template #start>
+        <h4> All Invitations </h4>
+    </ng-template>
+</p-toolbar>
+<div class="grid grid-cols-12 gap-4 mb-4 px-2">
+    <div class="col-span-12 md:col-span-6 lg:col-span-8">
+        <input pInputText type="text" placeholder="Search" pSize="large" class="w-full" />
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <p-select [options]="[{ label: 'Most Recent', value: 'recent' }, { label: 'All', value: 'all' }]"
+            placeholder="Sort By" class="w-full" size="large" />
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mb-4">
+    <div class="col-span-12 md:col-span-6 lg:col-span-6 p-2">
+        <p-card class="shadow-lg hover:shadow-xl h-full relative border-1 border-solid border-gray-100 hover:border-primary-50 pr-10">
+            <div class="absolute top-4 right-2 flex flex-col gp-2">
+                <p-button icon="pi pi-check" [rounded]="true" severity="secondary" [text]="true" />
+                <p-button icon="pi pi-times" [rounded]="true" severity="secondary" [text]="true" />
+            </div>
+            <!-- Card Header with Pin Button -->
+            <a href="">
+                <div class="flex flex-row gap-4 items-center mb-4">
+                    <i class="pi pi-comments"></i>
+                    <h5 class="text-xl font-semibold text-gray-800 two-word-limit" style="margin:0;">Engaging Community
+                    </h5>
+                    <p-tag value="Public" [rounded]="true" />
+                </div>
+            </a>
+            <!-- Card Content -->
+            <div class="mb-4">
+                <p class="text-gray-700 mt-2">A dedicated participant in community activities.</p>
+            </div>
+            <!-- Card Footer with Stats -->
+            <div class="flex items-center gap-4 pt-4">
+                <div class="flex items-center">
+                    <i class="pi pi-comments mr-2"></i>
+                    <span class="community-count">1.2k</span>
+                </div>
+                <p-avatar-group class="flex items-center">
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
+                        shape="circle" />
+                    <p-avatar label="+2" shape="circle" />
+                </p-avatar-group>
+            </div>
+        </p-card>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-6 p-2">
+        <p-card
+            class="shadow-lg hover:shadow-xl h-full relative border-1 border-solid border-gray-100 hover:border-primary-50 pr-10">
+            <div class="absolute top-4 right-2 flex flex-col gp-2">
+                <p-button icon="pi pi-check" [rounded]="true" severity="secondary" [text]="true" />
+                <p-button icon="pi pi-times" [rounded]="true" severity="secondary" [text]="true" />
+            </div>
+            <!-- Card Header with Pin Button -->
+            <a href="">
+                <div class="flex flex-row gap-4 items-center mb-4">
+                    <i class="pi pi-comments"></i>
+                    <h5 class="text-xl font-semibold text-gray-800 two-word-limit" style="margin:0;">Engaging Community
+                    </h5>
+                    <p-tag value="Public" [rounded]="true" />
+                </div>
+            </a>
+            <!-- Card Content -->
+            <div class="mb-4">
+                <p class="text-gray-700 mt-2">A dedicated participant in community activities.</p>
+            </div>
+            <!-- Card Footer with Stats -->
+            <div class="flex items-center gap-4 pt-4">
+                <div class="flex items-center">
+                    <i class="pi pi-comments mr-2"></i>
+                    <span class="community-count">1.2k</span>
+                </div>
+                <p-avatar-group class="flex items-center">
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
+                        shape="circle" />
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
+                        shape="circle" />
+                    <p-avatar label="+2" shape="circle" />
+                </p-avatar-group>
+            </div>
+        </p-card>
+    </div>
+</div>

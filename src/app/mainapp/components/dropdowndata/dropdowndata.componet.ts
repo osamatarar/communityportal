@@ -39,7 +39,7 @@ export class DropdownDataComponent {
           name: 'Name',
           label: 'Name',
           placeholder: 'Enter Name',
-          validators: { required: true, minLength: 3 },
+          validators: { required: true, minLength: 1 },
           group: 'name' ,
           requiredSymbol : true
         },
@@ -53,7 +53,7 @@ export class DropdownDataComponent {
         },
         {
           type: 'text' as const,
-          name: 'ReferenceID',
+          name: 'ReferenceId',
           label: 'Description',
           placeholder: 'Enter Description',
           hidden : true 
@@ -71,7 +71,7 @@ export class DropdownDataComponent {
   onActionTriggered(event: { action: string; row: any }) {
     if(event.action =='edit') {
          this.ShowDialog = !this.ShowDialog;
-         this.pathFormValue= {ReferenceID: +this.selectValue};
+         this.pathFormValue= {ReferenceId: +this.selectValue};
          this.pathFormValue = {...event.row,  ...this.pathFormValue};
     }
     else if(event.action =='delete')
@@ -96,7 +96,7 @@ export class DropdownDataComponent {
   addNew(){
     this.ShowDialog = !this.ShowDialog;
     this.pathFormValue = {};
-    this.pathFormValue = {ReferenceID: +this.selectValue};
+    this.pathFormValue = {ReferenceId: +this.selectValue};
   }
 
   onSelectionChange(data:any){

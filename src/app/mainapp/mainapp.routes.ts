@@ -8,16 +8,20 @@ import { HospitalsComponent } from "./components/hospitals/hospitals.component";
 import { ProjectDetailComponent } from "./components/projects/project-detail/project-detail.component";
 import { UserProfileComponent } from "./components/userprofile/userprofile.component";
 import { UserEventsComponent } from "./components/userEvents/userevent.component";
+import { UserforumsComponent } from "./components/userforums/userforums.component";
+import { DetailpageComponent } from "./components/userforums/detailpage/detailpage.component";
 
 export default [
-   { path: 'dropdowndata', component: DropdownDataComponent },
-   { path: 'adminuser', component: AdminUserComponent },
-   { path: 'project', component: ProjectComponent },
-   { path: 'project-detail', component: ProjectDetailComponent },
-   { path: 'event', component: EventComponent},
-   { path: 'venue', component: VenuesComponent},
-   { path: 'hospital', component: HospitalsComponent},
-   { path: 'userprofile', component :UserProfileComponent },
-   { path: 'userevent', component :UserEventsComponent },
-   { path: '**', redirectTo: '/notfound' }
+    { path: 'dropdowndata', component: DropdownDataComponent },
+    { path: 'adminuser', component: AdminUserComponent },
+    { path: 'project', component: ProjectComponent },
+    { path: 'project-detail', component: ProjectDetailComponent },
+    { path: 'event', component: EventComponent },
+    { path: 'venue', component: VenuesComponent },
+    { path: 'hospital', component: HospitalsComponent },
+    { path: 'userprofile', component: UserProfileComponent },
+    { path: 'userevent', component: UserEventsComponent },
+    { path: 'userforum', component: UserforumsComponent },
+    { path: 'userforum/detail', component: DetailpageComponent },
+    { path: '**', redirectTo: '/notfound' }
 ] as Routes;

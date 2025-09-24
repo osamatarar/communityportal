@@ -1,0 +1,3 @@
+.avatar-override {
+  @apply flex justify-center items-center  w-[100px] h-[100px];
+}
