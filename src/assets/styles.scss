@@ -26,5 +26,5 @@
     .p-toolbar h4 {margin:0px !important;}
     .p-dialog-header {border-bottom: 1px solid var(--surface-border) !important;}
     .block .p-button {width: 100% !important;padding-block: calc(var(--spacing) * 3) !important;}
-
+    .two-word-limit {display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 }
