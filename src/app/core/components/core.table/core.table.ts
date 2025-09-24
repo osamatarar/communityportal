@@ -22,7 +22,7 @@ import { Product, ProductService } from '../../../../app/pages/service/product.s
 import { APIResponse, GenericHttpService } from '@/services/genericHttpSerivce';
 import { DynamicFormComponent } from '../core.form/dynamic-form.component';
 import { TableAction } from '@/core/models/dynamic-field.model';
-
+import { ToggleSwitch } from 'primeng/toggleswitch';
 interface Column {
     field: string;
     header: string;
@@ -38,9 +38,9 @@ export type SortDirection = 'ASC' | 'DESC';
 
 export interface GridDataConfig {
   SPName: string;
-  SPParams?: Record<string, any>; 
-  SearchColumns?: Record<string, string>; 
-  SortColumns?: Record<string, SortDirection>; 
+  SPParams?: Record<string, any>;
+  SearchColumns?: Record<string, string>;
+  SortColumns?: Record<string, SortDirection>;
   PageNumber: number;
   PageSize: number;
 }
@@ -75,7 +75,8 @@ export interface TableColumn {
         TagModule,
         InputIconModule,
         IconFieldModule,
-        ConfirmDialogModule 
+        ConfirmDialogModule,
+        ToggleSwitch
     ],
     templateUrl: `./core.table.html`,
     providers: [MessageService, ProductService, ConfirmationService]
@@ -88,20 +89,20 @@ export class CoreTable implements OnChanges {
     @Input() Actions: TableAction[] = [];
     @Input() Columns : TableColumn[] = [];
     @Output() actionClicked = new EventEmitter<{ action: string; row: any }>();
- 
+     @Output() checkedChange = new EventEmitter<boolean>();
     pageNumber : number= 1;
     pageSize : number= 10;
 
     SortColumns:Record<string, SortDirection> = {};
-    SearchColumns: Record<string, string> = {}; 
-    
+    SearchColumns: Record<string, string> = {};
+
     gridConfig : GridDataConfig = {
         SPName : this.TableSPName,
         SPParams : this.SPParams,
         PageNumber : this.pageNumber,
         PageSize : this.pageSize
     };
-    
+
     gridData :any;
     total : number=0;
 
@@ -132,17 +133,17 @@ export class CoreTable implements OnChanges {
        this.buildSort(event.sortField  , event.sortOrder);
        this.loadData();
     }
-  
+
     buildSort(sortColum: any, sortValue:any) {
         if(sortColum){
           this.SortColumns[sortColum] = sortValue == 1 ? 'ASC' : 'DESC';
         }
         this.gridConfig.SortColumns = this.SortColumns;
     }
-    
+
     private filterTimeout: any;
     onGlobalFilter(event: Event){
-        clearTimeout(this.filterTimeout); 
+        clearTimeout(this.filterTimeout);
         this.filterTimeout = setTimeout(() => {
         const query = (event.target as HTMLInputElement).value;
 
@@ -153,7 +154,7 @@ export class CoreTable implements OnChanges {
     }
 
         this.gridConfig.SearchColumns = this.SearchColumns;
-        this.loadData(); 
+        this.loadData();
         }, 1000)
     }
     loadData(){
@@ -166,10 +167,10 @@ export class CoreTable implements OnChanges {
 
     get globalFilterFields(): string[] {
         return this.Columns
-        .filter(c => c.sortable) 
+        .filter(c => c.sortable)
         .map(c => c.field);
     }
-   
+
     @ViewChild('dt') dt!: Table;
     constructor(
         private confirmationService: ConfirmationService
@@ -188,7 +189,7 @@ export class CoreTable implements OnChanges {
       this.gridConfig = this.buildGridConfig();
        this.loadData();
     }
-       
+
     }
 
     exportCSV() {
@@ -196,20 +197,20 @@ export class CoreTable implements OnChanges {
     }
 
     openNew() {
-    
+
     }
 
     editProduct(product: Product) {
-      
+
     }
 
     deleteSelectedProducts() {
-      
-       
+
+
     }
 
     hideDialog() {
-     
+
     }
 
     deleteProduct(product: Product) {
@@ -217,9 +218,11 @@ export class CoreTable implements OnChanges {
             message: 'Are you sure you want to delete ' + product.name + '?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
-           
+
         });
     }
+    onToggleChange(value: boolean) {
+    this.checkedChange.emit(value);
+  }
 
-   
 }

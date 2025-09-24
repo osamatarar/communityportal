@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreDropdownComponent } from '@/core/components/core.dropdown';
@@ -9,19 +10,18 @@ import { DynamicFormComponent } from '@/core/components/core.form/dynamic-form.c
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-project',
-  standalone: true,
+  selector: 'app-venues',
   imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
-  templateUrl: './project.component.html'
 
+  templateUrl: './venues.component.html',
+  styleUrls: ['./venues.component.css']
 })
+export class VenuesComponent  {
 
-export class ProjectComponent {
-    constructor(private confirmationService: ConfirmationService,private router:Router) {}
-    selectedReferenceType :string ="Projects List";
+ constructor(private confirmationService: ConfirmationService) {}
+    selectedReferenceType :string ="Venues";
     pathFormValue : any= null;
 
     Columns : TableColumn[] =
@@ -101,13 +101,7 @@ export class ProjectComponent {
           group: 'fourthrow' ,
           fullWidth: false
         },
-        {
-          type: 'file' as const,
-          name: 'documentId',
-          label: 'Project Picture',
-          group: 'fourthrow' ,
-          fullWidth: false   
-        },
+
         {
           type: 'textarea' as const,
           name: 'Description',
@@ -116,7 +110,6 @@ export class ProjectComponent {
           group: 'fifthrow' ,
           fullWidth: true
         },
-      
         {
           type: 'text' as const,
           name: 'AccountTypeId',
@@ -131,7 +124,6 @@ export class ProjectComponent {
     Actions: TableAction[] = [
     { icon: 'pi pi-pencil', severity: 'info', action: 'edit' },
     { icon: 'pi pi-trash', severity: 'danger', action: 'delete',  },
-    { icon: 'pi pi-eye', severity: 'info', action: 'view',  },
   ];
 
 
@@ -153,13 +145,6 @@ export class ProjectComponent {
 
                 }
             });
-    }else if(event.action =='view')
-    {
-        this.router.navigate(
-            ['/app/project-detail'],
-            { queryParams: { id: event.row.ID } }
-        );
-
     }
   }
 
@@ -179,5 +164,6 @@ export class ProjectComponent {
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
   }
+
 
 }

@@ -1,0 +1,68 @@
+
+<div class="page-content">
+  <p-card class="project-card p-shadow-6">
+    <div class="card-body">
+
+      <!-- LEFT : Image -->
+      <div class="image-box">
+        <!-- bind the real image url here -->
+        <img [src]="project.imageUrl" alt="project image" class="image-placeholder" />
+        <div class="image-footer">
+          <span class="p-text-secondary">{{ project.group }}</span>
+          <span class="project-id">{{ project.code }}</span>
+        </div>
+      </div>
+
+      <!-- RIGHT : Text Content -->
+      <div class="content-box">
+        <h2 class="title">{{ project.title }}</h2>
+
+        <div class="info">
+          <i class="pi pi-calendar"></i>
+          <span>{{ project.startDate }} – {{ project.endDate }}</span>
+        </div>
+
+        <div class="info">
+          <i class="pi pi-map-marker"></i>
+          <span>{{ project.location }}</span>
+        </div>
+
+        <p-divider class="divider"></p-divider>
+
+        <p class="description">
+          {{ project.description }}
+          <br /><br />
+          {{ project.details }}
+        </p>
+      </div>
+
+    </div>
+  </p-card>
+</div>
+
+     <p-toolbar >
+        <ng-template #start> <h4> {{selectedReferenceType}} </h4>
+        </ng-template>
+        <ng-template #end>
+            <p-button label="New Campaigns" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+        </ng-template>
+    </p-toolbar>
+    <core-table [TableSPName]="'GetCampaigns'"
+                [SPParams]="{ProjectID:projectID}"
+                [Columns]="Columns"
+                [Actions]="Actions"
+                (checkedChange)="onToggleChange($event)"
+                (actionClicked)="onActionTriggered($event)">
+    </core-table>
+
+    <dynamic-form [apiName]="'generic/CMCampaign'"
+                  [ShowDialog]="ShowDialog"
+                  [HeaderName]="'Add new Campaigns'"
+                  [config]="FormConfig"
+                  [patchData]="pathFormValue"
+                  (toggleDialog)="toggleDialog($event)">
+    </dynamic-form>
+
+ <p-confirmdialog [style]="{ width: '450px' }" />
+
+
