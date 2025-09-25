@@ -4,7 +4,7 @@
         <ng-template #start> <h4> {{selectedReferenceType}} </h4>
         </ng-template>
         <ng-template #end>
-            <p-button label="New Venue" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+            <p-button label="New Venue" icon="pi pi-plus" [rounded]="true" severity="contrast" class="mr-2" (onClick)="addNew()" />
         </ng-template>
     </p-toolbar>
     <core-table [TableSPName]="'GetVenu'"
@@ -22,5 +22,3 @@
     </dynamic-form>
 
  <p-confirmdialog [style]="{ width: '450px' }" />
-
-
