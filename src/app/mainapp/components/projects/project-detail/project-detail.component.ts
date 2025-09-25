@@ -81,8 +81,9 @@ export class ProjectDetailComponent implements OnInit {
           fullWidth: false
         },
         {
-          type: 'text' as const,
+          type: 'number' as const,
           name: 'TotalCost',
+          value: "0",
           label: 'Total Cost',
           placeholder: 'Enter Total Cost',
           validators: { required: true },

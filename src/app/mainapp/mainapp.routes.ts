@@ -10,6 +10,8 @@ import { UserProfileComponent } from "./components/userprofile/userprofile.compo
 import { UserEventsComponent } from "./components/userEvents/userevent.component";
 import { UserforumsComponent } from "./components/userforums/userforums.component";
 import { DetailpageComponent } from "./components/userforums/detailpage/detailpage.component";
+import { UserVenuesComponent } from "./components/uservenues/uservenues.component";
+import { UserCompaingComponent } from "./components/usercompaigns/usercompaings.component";
 
 export default [
     { path: 'dropdowndata', component: DropdownDataComponent },
@@ -21,7 +23,9 @@ export default [
     { path: 'hospital', component: HospitalsComponent },
     { path: 'userprofile', component: UserProfileComponent },
     { path: 'userevent', component: UserEventsComponent },
-    { path: 'userforum', component: UserforumsComponent },
+    { path: 'userforums', component: UserforumsComponent },
     { path: 'userforum/detail', component: DetailpageComponent },
+    { path: 'uservenues', component: UserVenuesComponent },
+    { path: 'usercompaings', component: UserCompaingComponent},
     { path: '**', redirectTo: '/notfound' }
 ] as Routes;
