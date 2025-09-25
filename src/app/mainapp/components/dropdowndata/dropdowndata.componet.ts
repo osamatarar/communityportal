@@ -10,6 +10,7 @@ import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import {FieldConfig} from '../../../core/models/dynamic-field.model'
+import { CommunityBaseComponent } from '../basecomponent';
 
 @Component({
   selector: 'dropdown-data',
@@ -18,9 +19,7 @@ import {FieldConfig} from '../../../core/models/dynamic-field.model'
   templateUrl: './dropdowndata.component.html'
   
 })
-export class DropdownDataComponent {
-    constructor(private confirmationService: ConfirmationService) {}
-  
+export class DropdownDataComponent extends CommunityBaseComponent {
     selectValue :any =0;
     selectedReferenceType :string ="";
     pathFormValue : any= null;
@@ -102,5 +101,4 @@ export class DropdownDataComponent {
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
   }
-
 }

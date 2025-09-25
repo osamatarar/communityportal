@@ -10,6 +10,7 @@
     <core-table [TableSPName]="'GetForums'"
                 [Columns]="Columns"
                 [Actions]="Actions"
+                [RefreshData]="RefreshData"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
 
@@ -18,6 +19,7 @@
                   [HeaderName]="'New Project'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
+                  (submitForm)="OnFormSubmit($event)"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
 

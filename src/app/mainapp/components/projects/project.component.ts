@@ -10,6 +10,7 @@ import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { Router } from '@angular/router';
+import { CommunityBaseComponent } from '../basecomponent';
 
 @Component({
   selector: 'app-project',
@@ -19,8 +20,7 @@ import { Router } from '@angular/router';
 
 })
 
-export class ProjectComponent {
-    constructor(private confirmationService: ConfirmationService,private router:Router) {}
+export class ProjectComponent extends CommunityBaseComponent {
     selectedReferenceType :string ="Projects List";
     pathFormValue : any= null;
 

@@ -10,6 +10,7 @@ import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { FluidClasses } from 'primeng/fluid';
+import { CommunityBaseComponent } from '../basecomponent';
 
 @Component({
   selector: 'app-forums',
@@ -18,8 +19,8 @@ import { FluidClasses } from 'primeng/fluid';
 
   styleUrls: ['./forums.component.css']
 })
-export class ForumsComponent {
-    constructor(private confirmationService: ConfirmationService) {}
+export class ForumsComponent extends CommunityBaseComponent {
+
     selectedReferenceType :string ="All Forums";
     pathFormValue : any= null;
 

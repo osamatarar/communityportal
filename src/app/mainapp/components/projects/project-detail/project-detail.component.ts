@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { GenericHttpService } from '@/services/genericHttpSerivce';
+import { CommunityBaseComponent } from '../../basecomponent';
 
 @Component({
   selector: 'app-project-detail',
@@ -20,9 +21,8 @@ import { GenericHttpService } from '@/services/genericHttpSerivce';
   imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable,CardModule, DividerModule],
   styleUrls: ['./project-detail.component.css']
 })
-export class ProjectDetailComponent implements OnInit {
+export class ProjectDetailComponent extends CommunityBaseComponent implements OnInit {
     httpService: any = inject(GenericHttpService);
-    constructor(private confirmationService: ConfirmationService,private route: ActivatedRoute) {}
     selectedReferenceType :string ="Campaigns";
     pathFormValue : any= null;
 

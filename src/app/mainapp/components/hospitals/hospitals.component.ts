@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { CommunityBaseComponent } from '../basecomponent';
 
 @Component({
   selector: 'app-hospitals',
@@ -15,8 +16,8 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
   imports: [CommonModule, ButtonModule, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
   styleUrls: ['./hospitals.component.css']
 })
-export class HospitalsComponent {
-    constructor(private confirmationService: ConfirmationService) {}
+export class HospitalsComponent extends CommunityBaseComponent {
+
     selectedReferenceType :string ="Hospital Requests";
     pathFormValue : any= null;
 

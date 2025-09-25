@@ -82,10 +82,9 @@ export class DynamicFormComponent implements OnChanges {
 
         });
         }
-
-
         this.hideDialog();
         this.submitForm.emit(this.form.value);
+
         } else {
         this.form.markAllAsTouched();
         }
