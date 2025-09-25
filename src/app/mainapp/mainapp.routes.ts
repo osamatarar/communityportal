@@ -15,6 +15,7 @@ import { UserCompaingComponent } from "./components/usercompaigns/usercompaings.
 import { ForumsComponent } from "./components/forums/forums.component";
 import { DetailPageComponent } from "./components/venues/DetailPage/DetailPage.component";
 import { RequestComponent } from "./components/request/request.component";
+import { CommitteeComponent } from "./components/committee/committee.component";
 
 export default [
     { path: 'dropdowndata', component: DropdownDataComponent },
@@ -33,5 +34,7 @@ export default [
     { path: 'userforum/detail', component: DetailpageComponent },
     { path: 'uservenues', component: UserVenuesComponent },
     { path: 'usercompaings', component: UserCompaingComponent },
+    { path: 'usercompaings', component: UserCompaingComponent},
+    { path: 'committee', component: CommitteeComponent},
     { path: '**', redirectTo: '/notfound' }
 ] as Routes;

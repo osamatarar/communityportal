@@ -21,6 +21,7 @@
                 [TableHeaderName]="selectedReferenceType"
                 [Columns]="Columns"
                 [Actions]="Actions"
+                [RefreshData]="RefreshData"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
 
@@ -29,6 +30,7 @@
                   [HeaderName]="selectedReferenceType"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
+                  (submitForm)="OnFormSubmit($event)"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>}
 

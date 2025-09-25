@@ -88,6 +88,7 @@ export class CoreTable implements OnChanges {
     @Input() SPParams : Record<string, any> ={};
     @Input() Actions: TableAction[] = [];
     @Input() Columns : TableColumn[] = [];
+    @Input() RefreshData: string =  new Date(Date.now()).toString();
     @Output() actionClicked = new EventEmitter<{ action: string; row: any }>();
      @Output() checkedChange = new EventEmitter<boolean>();
     pageNumber : number= 1;
@@ -184,7 +185,7 @@ export class CoreTable implements OnChanges {
       changes['SearchColumns'] ||
       changes['SortColumns'] ||
       changes['pageNumber'] ||
-      changes['pageSize']
+      changes['pageSize'] || changes['RefreshData']
     ) {
       this.gridConfig = this.buildGridConfig();
        this.loadData();

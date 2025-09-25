@@ -9,6 +9,7 @@
     </p-toolbar>
     <core-table [TableSPName]="'GetEvents'"
                 [Columns]="Columns"
+                [RefreshData]="RefreshData"
                 [Actions]="Actions"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
@@ -18,6 +19,7 @@
                   [HeaderName]="'Add new Event'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
+                   (submitForm)="OnFormSubmit($event)"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
 

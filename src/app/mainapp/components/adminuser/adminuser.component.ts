@@ -9,6 +9,7 @@ import { DynamicFormComponent } from '@/core/components/core.form/dynamic-form.c
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { CommunityBaseComponent } from '../basecomponent';
 
 @Component({
   selector: 'admin-user',
@@ -18,8 +19,8 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
   
 })
 
-export class AdminUserComponent {
-    constructor(private confirmationService: ConfirmationService) {}
+export class AdminUserComponent extends CommunityBaseComponent {
+
     selectedReferenceType :string ="Users";
     pathFormValue : any= null;
 
@@ -128,5 +129,6 @@ export class AdminUserComponent {
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
   }
+
 
 }

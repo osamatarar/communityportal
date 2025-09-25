@@ -8,6 +8,7 @@
     <core-table [TableSPName]="'GetUsers'"
                 [Columns]="Columns"
                 [Actions]="Actions"
+                [RefreshData]="RefreshData"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
 
@@ -16,6 +17,7 @@
                   [HeaderName]="'Add new user'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
+                  (submitForm)="OnFormSubmit($event)"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
 

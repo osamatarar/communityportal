@@ -1,0 +1,50 @@
+<p-toolbar >
+        <ng-template #start> <h4> {{selectedReferenceType}} </h4>
+        </ng-template>
+        <ng-template #end>
+         </ng-template>
+</p-toolbar>
+    <core-table [TableSPName]="'GetCommittee'"
+                [Columns]="Columns"
+                [Actions]="Actions"
+                (actionClicked)="onActionTriggered($event)">
+    </core-table>
+   
+    <p-dialog [(visible)]="ShowDialog" [style]="{ width: '1250px' }" [header]="'Committee Members'" [modal]="true">
+ 
+        <p-toolbar >
+        <ng-template #start> <h4>WorkFlow Members List </h4>
+        </ng-template>
+        <ng-template #end>
+                        <p-button [rounded]="true" label="Add New Member" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addMember()" />
+         </ng-template>
+         </p-toolbar>
+            <core-table [TableSPName]="'GetCommitteeMemebers'"
+                        [Columns]="MemberColumns"
+                        [Actions]="MemberActions"
+                        [SPParams]="{committeeId: CommitteeId}"
+                        [RefreshData]="RefreshData"
+                        (actionClicked)="onActionTriggered($event)">
+            </core-table>
+
+    </p-dialog>
+
+
+    <p-dialog header="Add Member" [(visible)]="showDialogAdd" [modal]="true" [style]="{width: '350px'}">
+    <div class="flex flex-col gap-3">
+      <core-dropdown
+          [url]="'Committee/GetUserForCommitee?Id=' + CommitteeId"
+          optionLabel="UserName"
+          [(ngModel)]="selectValue"
+       /> 
+
+      <div class="flex justify-end gap-2">
+        <button pButton label="Cancel" severity="contrast" class="p-button-text" (click)="showDialogAdd=false"></button>
+        <button pButton label="Save" severity="contrast" (click)="saveMember()" [disabled]="!selectValue"></button>
+      </div>
+    </div>
+  </p-dialog>
+
+
+
+ <p-confirmdialog [style]="{ width: '450px' }" />

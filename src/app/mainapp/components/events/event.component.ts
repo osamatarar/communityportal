@@ -9,6 +9,7 @@ import { DynamicFormComponent } from '@/core/components/core.form/dynamic-form.c
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { CommunityBaseComponent } from '../basecomponent';
 
 @Component({
   selector: 'app-project',
@@ -18,8 +19,8 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
 
 })
 
-export class EventComponent {
-    constructor(private confirmationService: ConfirmationService) {}
+export class EventComponent extends CommunityBaseComponent {
+  
     selectedReferenceType :string ="Event List";
     pathFormValue : any= null;
 
