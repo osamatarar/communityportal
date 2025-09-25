@@ -1,0 +1,76 @@
+<p-toolbar>
+    <ng-template #start>
+        <h4> Venue Title </h4>
+    </ng-template>
+</p-toolbar>
+<div class="grid grid-cols-12 gap-4 mb-4">
+    <div class="col-span-12 p-2">
+        <p-carousel [numVisible]="1" [numScroll]="1" [circular]="false">
+            <ng-template>
+                <img src="https://primefaces.org/cdn/primereact/images/galleria/galleria1.jpg" alt="Image" style="width: 100%; height: auto; border-radius: 0.5rem;" />
+            </ng-template>
+        </p-carousel>
+        <div class="flex flex-col w-full mt-4">
+            <!-- Card Footer with Stats -->
+            <div class="flex items-center gap-6 pt-4 mb-12">
+                <div class="flex items-center gap-2">
+                    <p-button icon="pi pi-map-marker" size="small" [rounded]="true" disabled />
+                    <span>ABC Lodge (Guest House)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <p-button icon="pi pi-face-smile" size="small" [rounded]="true" disabled />
+                    <span>1500-2000</span>
+                </div>
+            </div>
+            <p>Welcome to Community Hall,</p>
+            <p>A vibrant venue where community members can come together to celebrate life’s special
+            moments. With spacious seating, a delightful dining area, and a cozy atmosphere, it’s the perfect spot for gatherings,
+            feasts, and festivities. Enjoy delicious food and create lasting memories with friends and family in this inviting
+            space.</p>
+        </div>
+        <div class="flex flex-col w-full mt-12">
+            <div class="flex flex-col w-full">
+                <h5>Amenities / Facilities</h5>
+                <div class="flex items-center gap-6 pt-4">
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-check" size="small" [rounded]="true" disabled />
+                        <span><strong>Miltimedia:</strong> $1500</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-check" size="small" [rounded]="true" disabled />
+                        <span><strong>Music System:</strong> $1500</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-times" size="small" severity="secondary" [rounded]="true" disabled />
+                        <span><strong>HITea:</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-check" size="small" [rounded]="true" disabled />
+                        <span><strong>Lunch:</strong> $1500</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-times" size="small" severity="secondary" [rounded]="true" disabled />
+                        <span><strong>Dinner:</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-check" size="small" [rounded]="true" disabled />
+                        <span><strong>Chair:</strong> $1500</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-check" size="small" [rounded]="true" disabled />
+                        <span><strong>Table:</strong> $1500</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <p-button icon="pi pi-check" size="small" [rounded]="true" disabled />
+                        <span><strong>Sofa:</strong> $1500</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col w-full mt-12">
+            <h5>Booked Requests</h5>
+            <core-table>
+            </core-table>
+        </div>
+    </div>
+</div>
