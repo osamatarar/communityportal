@@ -1,0 +1,36 @@
+<form [formGroup]="form">
+    <div class="grid grid-cols-12 gap-4 mb-4 mt-4">
+        <div class="field col-span-12 md:col-span-6 lg:col-span-6 p-2 flex flex-col gap-2">
+            <label for="">Select Request Type</label>
+            <p-select [options]="RequestTypes" formControlName="requestType" [appendTo]="'body'" optionLabel="name"
+                placeholder="Select Request Type" class="w-full" (onChange)="onRequestTypeChange($event)">
+            </p-select>
+        </div>
+    </div>
+    <!-- LPO -->
+    <div class="grid grid-cols-12 gap-4 mb-4" *ngIf="selectedRType === 'LPO'">
+        <div class="flex flex-col col-span-12 md:col-span-6 lg:col-span-6 p-2">
+            <h3>LPO Details</h3>
+            <input pInputText type="text" placeholder="Hospital Name" formControlName="hospitalName" />
+        </div>
+    </div>
+    <!-- Medical Insurance -->
+    <div class="grid grid-cols-12 gap-4 mb-4" *ngIf="selectedRType === 'MedicalInsurance'">
+        <h3>Medical Insurance Details</h3>
+        <input pInputText type="text" placeholder="Policy Number" formControlName="policyNumber" />
+    </div>
+    <!-- Life Insurance -->
+    <div class="grid grid-cols-12 gap-4 mb-4" *ngIf="selectedRType === 'LifeInsurance'">
+        <h3>Life Insurance Details</h3>
+        <input pInputText type="text" placeholder="Beneficiary Name" formControlName="beneficiaryName" />
+    </div>
+    <!-- Footer -->
+    <div class="flex gap-2 justify-end pt-4 p-dialog-footer">
+        <p-button label="Cancel" variant="outlined" severity="contrast" [rounded]="true" styleClass="btn-outline-custom"
+            (click)="hideDialog()">
+        </p-button>
+        <p-button label="Save" severity="contrast" [rounded]="true" styleClass="btn-solid-custom"
+            (click)="submitForm()">
+        </p-button>
+    </div>
+</form>
