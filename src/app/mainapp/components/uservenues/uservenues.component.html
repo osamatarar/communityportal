@@ -1,9 +1,32 @@
 <div class="flex justify-between items-center w-full mt-2 mb-4">
   <h4>Venues</h4>
-  
 </div>
-<div class="grid grid-cols-12 gap-4">
-  <div *ngFor="let card of [1,2,3,4,5,6,7]" class="col-span-12 sm:col-span-6 lg:col-span-3 p-2">
+<div class="grid grid-cols-12 gap-4 mb-4 px-2">
+    <div class="col-span-12 md:col-span-3 lg:col-span-3 flex flex-col gap-2">
+        <label for="">Where</label>
+        <p-iconfield>
+            <p-inputicon class="pi pi-search" />
+            <p-autocomplete [suggestions]="items" [showClear]="true" fluid size="large" />
+        </p-iconfield>
+    </div>
+    <div class="col-span-12 md:col-span-3 lg:col-span-3 flex flex-col gap-2">
+        <label for="">Guests</label>
+        <p-inputnumber inputId="integeronly" placeholder="15" fluid size="large" />
+    </div>
+    <div class="col-span-12 md:col-span-4 lg:col-span-4 flex flex-col gap-2">
+        <label for="">Date</label>
+        <p-iconfield>
+            <p-datepicker selectionMode="range" [readonlyInput]="true" fluid size="large" />
+            <p-inputicon class="pi pi-calendar-minus" />
+        </p-iconfield>
+    </div>
+    <div class="col-span-12 md:col-span-2 lg:col-span-2 flex flex-col gap-2">
+        <label for="">&nbsp;</label>
+        <p-button label="Search" severity="contrast" [rounded]="true" class="block"></p-button>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 pt-4 px-2">
+  <div *ngFor="let card of [1,2,3,4,5,6,7]" class="col-span-12 sm:col-span-6 lg:col-span-3">
     <p-card class="shadow-lg h-full relative" [style]="{ overflow: 'hidden' }">
         <ng-template #header>
             <img class="w-full" [style]="{ height: '180px' }" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" alt="Event Image" />
@@ -16,7 +39,7 @@
                 <i class="pi pi-map-marker text-green-600"></i>
                 <span>New York, NY</span>
             </div>
-            
+
         </div>
         <ng-template #footer>
             <div class="flex flex-col gap-2 mt-4">

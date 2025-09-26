@@ -8,10 +8,21 @@ import { Button } from "primeng/button";
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { FluidModule } from 'primeng/fluid';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DatePickerModule } from 'primeng/datepicker';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 @Component({
     selector: 'upcomming-event',
     standalone: true,
-    imports: [CommonModule, TabsModule, SelectButton, FormsModule, ProgressBar, Button, CardModule, TagModule, FluidModule],
+    imports: [
+        CommonModule, TabsModule, SelectButton, FormsModule, ProgressBar, Button, CardModule, TagModule, FluidModule, AutoCompleteModule,
+        InputNumberModule,
+        DatePickerModule,
+        IconFieldModule,
+        InputIconModule
+    ],
     templateUrl: './uservenues.component.html'
 })
 export class UserVenuesComponent {
@@ -19,6 +30,11 @@ export class UserVenuesComponent {
         { label: 'Free', value: 'free' },
         { label: 'Paid', value: 'paid' }
     ];
+
+    items: any[] = [
+        { name: 'Venue 1' },
+        { name: 'Venue 2' },
+    ]
 
     value: string = 'Free';
 
