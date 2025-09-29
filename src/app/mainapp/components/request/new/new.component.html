@@ -1,36 +1,106 @@
-<form [formGroup]="form">
-    <div class="grid grid-cols-12 gap-4 mb-4 mt-4">
-        <div class="field col-span-12 md:col-span-6 lg:col-span-6 p-2 flex flex-col gap-2">
-            <label for="">Select Request Type</label>
-            <p-select [options]="RequestTypes" formControlName="requestType" [appendTo]="'body'" optionLabel="name"
-                placeholder="Select Request Type" class="w-full" (onChange)="onRequestTypeChange($event)">
-            </p-select>
+<form>
+    <div class="grid grid-cols-12 gap-4 mb-4">
+        <div class="flex flex-col col-span-12 p-2">
+            <p-stepper [value]="1">
+                <p-step-list>
+                    <p-step [value]="1">General</p-step>
+                    <p-step [value]="2">Beneficiary Info</p-step>
+                    <p-step [value]="3">Docs</p-step>
+                    <p-step [value]="4">Consent</p-step>
+                </p-step-list>
+                <p-step-panels>
+                    <p-step-panel [value]="1">
+                        <ng-template #content let-activateCallback="activateCallback">
+                            <div class="grid grid-cols-12 gap-4 mb-4 px-2">
+                                <div class="col-span-12 flex flex-col">
+                                    <h5 style="margin-bottom: 0 !important;">Contact Information</h5>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                                    <label for="">Requester Full Name</label>
+                                    <input pInputText type="text" placeholder="Patient Name" />
+                                </div>
+                                <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                                    <label for="">Email</label>
+                                    <input pInputText type="text" placeholder="Patient Name" />
+                                </div>
+                                <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                                    <label for="">Contact Number</label>
+                                    <input pInputText type="text" placeholder="Patient Name" />
+                                </div>
+                                <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                                    <label for="">Relationship to Request</label>
+                                    <p-select [options]="['Individual Beneficiary', 'Family Member / Guardian', 'Community Leader / Representative', 'Other']"
+                                        placeholder="Select Relationship"  [appendTo]="'body'" class="w-full" />
+                                </div>
+                                <div class="col-span-12 flex flex-col">
+                                    <h5 class="pt-4" style="margin-bottom: 0 !important;">General Details</h5>
+                                </div>
+                                <div class="col-span-12 flex flex-col gap-2">
+                                    <label for="">Request Title / Subject</label>
+                                    <input pInputText type="text" placeholder="Patient Name" />
+                                </div>
+                                <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                                    <label for="">Nature of Assistance Needed</label>
+                                    <p-select
+                                        [options]="['Financial Aid', 'Basic Needs', 'Medical / Health', 'Educational Support', 'Housing / Shelter','Community Project','Disaster Relief' , 'Other']"
+                                         placeholder="Select Nature of Assistance Needed" [appendTo]="'body'" class="w-full" />
+                                </div>
+                                <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                                    <label for="">Level of Urgency</label>
+                                    <p-select
+                                        [options]="['Low', 'Medium', 'High / Immediate ', 'Emergency']"
+                                         placeholder="Select Level of Urgency" [appendTo]="'body'" class="w-full" />
+                                </div>
+                                <div class="col-span-12 flex flex-col gap-2">
+                                    <label for="">Detailed Description of the need</label>
+                                    <textarea rows="5" class="w-full" pTextarea></textarea>
+                                </div>
+                            </div>
+                            <div class="flex pt-6 justify-end p-footer">
+                                <p-button label="Next" icon="pi pi-arrow-right" iconPos="right" severity="contrast" [rounded]="true" styleClass="btn-solid-custom" (onClick)="activateCallback(2)" />
+                            </div>
+                        </ng-template>
+                    </p-step-panel>
+                    <p-step-panel [value]="2">
+                        <ng-template #content let-activateCallback="activateCallback">
+                            <div class="flex flex-col h-48">
+
+                            </div>
+                            <div class="flex pt-6 justify-end p-footer">
+                                <p-button label="Back" severity="secondary" icon="pi pi-arrow-left"
+                                    (onClick)="activateCallback(1)" />
+                                <p-button label="Next" icon="pi pi-arrow-right" iconPos="right" (onClick)="activateCallback(3)" />
+                            </div>
+                        </ng-template>
+                    </p-step-panel>
+                    <p-step-panel [value]="3">
+                        <ng-template #content let-activateCallback="activateCallback">
+                            <div class="flex flex-col h-48">
+                                <div
+                                    class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                    Content III
+                                </div>
+                            </div>
+                            <div class="flex pt-6 justify-start">
+                                <p-button label="Back" icon="pi pi-arrow-left" iconPos="right" (onClick)="activateCallback(2)" />
+                            </div>
+                        </ng-template>
+                    </p-step-panel>
+                    <p-step-panel [value]="4">
+                        <ng-template #content let-activateCallback="activateCallback">
+                            <div class="flex flex-col h-48">
+                                <div
+                                    class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                    Content III
+                                </div>
+                            </div>
+                            <div class="flex pt-6 justify-start">
+                                <p-button label="Back" icon="pi pi-arrow-left" iconPos="right" (onClick)="activateCallback(2)" />
+                            </div>
+                        </ng-template>
+                    </p-step-panel>
+                </p-step-panels>
+            </p-stepper>
         </div>
-    </div>
-    <!-- LPO -->
-    <div class="grid grid-cols-12 gap-4 mb-4" *ngIf="selectedRType === 'LPO'">
-        <div class="flex flex-col col-span-12 md:col-span-6 lg:col-span-6 p-2">
-            <h3>LPO Details</h3>
-            <input pInputText type="text" placeholder="Hospital Name" formControlName="hospitalName" />
-        </div>
-    </div>
-    <!-- Medical Insurance -->
-    <div class="grid grid-cols-12 gap-4 mb-4" *ngIf="selectedRType === 'MedicalInsurance'">
-        <h3>Medical Insurance Details</h3>
-        <input pInputText type="text" placeholder="Policy Number" formControlName="policyNumber" />
-    </div>
-    <!-- Life Insurance -->
-    <div class="grid grid-cols-12 gap-4 mb-4" *ngIf="selectedRType === 'LifeInsurance'">
-        <h3>Life Insurance Details</h3>
-        <input pInputText type="text" placeholder="Beneficiary Name" formControlName="beneficiaryName" />
-    </div>
-    <!-- Footer -->
-    <div class="flex gap-2 justify-end pt-4 p-dialog-footer">
-        <p-button label="Cancel" variant="outlined" severity="contrast" [rounded]="true" styleClass="btn-outline-custom"
-            (click)="hideDialog()">
-        </p-button>
-        <p-button label="Save" severity="contrast" [rounded]="true" styleClass="btn-solid-custom"
-            (click)="submitForm()">
-        </p-button>
     </div>
 </form>
