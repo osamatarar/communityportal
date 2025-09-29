@@ -14,6 +14,7 @@ import { UserVenuesComponent } from "./components/uservenues/uservenues.componen
 import { UserCompaingComponent } from "./components/usercompaigns/usercompaings.component";
 import { ForumsComponent } from "./components/forums/forums.component";
 import { DetailPageComponent } from "./components/venues/DetailPage/DetailPage.component";
+import { RequestComponent } from "./components/request/request.component";
 import { CommitteeComponent } from "./components/committee/committee.component";
 
 export default [
@@ -22,6 +23,7 @@ export default [
     { path: 'project', component: ProjectComponent },
     { path: 'project-detail', component: ProjectDetailComponent },
     { path: 'event', component: EventComponent },
+    { path: 'request', component: RequestComponent },
     { path: 'venue', component: VenuesComponent },
     { path: 'venue/detail', component: DetailPageComponent },
     { path: 'hospital', component: HospitalsComponent },
@@ -31,6 +33,7 @@ export default [
     { path: 'userforums', component: UserforumsComponent },
     { path: 'userforum/detail', component: DetailpageComponent },
     { path: 'uservenues', component: UserVenuesComponent },
+    { path: 'usercompaings', component: UserCompaingComponent },
     { path: 'usercompaings', component: UserCompaingComponent},
     { path: 'committee', component: CommitteeComponent},
     { path: '**', redirectTo: '/notfound' }
