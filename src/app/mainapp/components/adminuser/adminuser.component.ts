@@ -26,10 +26,10 @@ export class AdminUserComponent extends CommunityBaseComponent {
 
     Columns : TableColumn[] = 
     [
-         { field: 'FullName', header: 'Full Name', sortable: true, style: 'min-width:16rem' },
+      { field: 'FullName', header: 'Full Name', sortable: true, style: 'min-width:16rem' },
       { field: 'Email', header: 'Email', sortable: true, style: 'min-width:20rem' },
       { field: 'Mobile', header: 'Mobile', sortable: true, style: 'min-width:20rem' },
-     { field: 'DepartmentName', header: 'Department Name', sortable: false, style: 'min-width:20rem', },
+      { field: 'DepartmentName', header: 'Department Name', sortable: false, style: 'min-width:20rem', },
     ];
     
     FormConfig = {
@@ -38,7 +38,7 @@ export class AdminUserComponent extends CommunityBaseComponent {
         {
           type: 'text' as const,
           name: 'FullName',
-          label: 'Name',
+          label: 'First Name',
           placeholder: 'Enter FullName',
           validators: { required: true, minLength: 3 },
           group: 'name' 
@@ -46,7 +46,7 @@ export class AdminUserComponent extends CommunityBaseComponent {
         {
           type: 'text' as const,
           name: 'LastName',
-          label: 'Name',
+          label: 'Last Name',
           placeholder: 'Enter LastName',
           validators: { required: true, minLength: 3 },
           group: 'name' 
@@ -91,7 +91,8 @@ export class AdminUserComponent extends CommunityBaseComponent {
 
     Actions: TableAction[] = [
     { icon: 'pi pi-pencil', severity: 'info', action: 'edit' },
-    { icon: 'pi pi-trash', severity: 'danger', action: 'delete',  },
+    { icon: 'pi pi-trash', severity: 'danger', action: 'delete',  }
+    
   ];
 
 
