@@ -8,10 +8,10 @@ export class CommunityBaseComponent {
     protected  router:Router,
     protected route: ActivatedRoute
    ){}
+
    RefreshData :string = new Date(Date.now()).toString();
 
    OnFormSubmit(event : any){
-
-   this.RefreshData = new Date(Date.now()).toString();
+    this.RefreshData = new Date(Date.now()).toString();
   }
 }

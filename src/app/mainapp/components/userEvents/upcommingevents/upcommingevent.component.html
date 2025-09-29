@@ -11,37 +11,40 @@
     </div>
 </div>
 <div class="grid grid-cols-12 gap-4">
-  <div *ngFor="let card of [1,2,3,4,5,6,7]" class="col-span-12 sm:col-span-6 lg:col-span-3 p-2">
+  <div *ngFor="let card of cards" class="col-span-12 sm:col-span-6 lg:col-span-3 p-2">
     <p-card class="shadow-lg h-full relative" [style]="{ overflow: 'hidden' }">
-        <ng-template #header>
-            <img class="w-full" [style]="{ height: '180px' }" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" alt="Event Image" />
-            <p-tag value="$50" [rounded]="true" class="absolute top-4 left-4" />
-        </ng-template>
-        <ng-template #title> Event Title Here </ng-template>
-        <!-- Event Content -->
-        <div class="flex flex-col gap-3 mt-4">
-            <!-- Date -->
-            <div class="flex items-center gap-2 text-gray-600 text-sm">
-                <i class="pi pi-calendar text-green-600"></i>
-                <span>Sep 15 - 17, 2025</span>
-            </div>
-            <!-- Location -->
-            <div class="flex items-center gap-2 text-gray-600 text-sm">
-                <i class="pi pi-map-marker text-green-600"></i>
-                <span>New York, NY</span>
-            </div>
-            <!-- Progress -->
-            <p-progressBar [value]="97" [showValue]="false" [style]="{ height: '0.5rem' }"></p-progressBar>
-            <span class="text-sm font-medium">
-                15 seats left out of 500
-            </span>
+      <ng-template #header>
+        <img class="w-full" [style]="{ height: '180px' }" [src]="card.image" alt="Event Image" />
+        <p-tag [value]="card.price" [rounded]="true" class="absolute top-4 left-4" />
+      </ng-template>
+
+      <ng-template #title> {{ card.title }} </ng-template>
+
+      <div class="flex flex-col gap-3 mt-4">
+        <!-- Date -->
+        <div class="flex items-center gap-2 text-gray-600 text-sm">
+          <i class="pi pi-calendar text-green-600"></i>
+          <span>{{ card.date }}</span>
         </div>
-        <ng-template #footer>
-            <div class="flex flex-col gap-2 mt-4">
-                <p-button label="Book a Seat"  severity="contrast" [rounded]="true" class="block"></p-button>
-                <p-button label="View Details" severity="contrast" [rounded]="true" outlined="true" class="block"></p-button>
-            </div>
-        </ng-template>
+        <!-- Location -->
+        <div class="flex items-center gap-2 text-gray-600 text-sm">
+          <i class="pi pi-map-marker text-green-600"></i>
+          <span>{{ card.location }}</span>
+        </div>
+        <!-- Progress -->
+        <p-progressBar [value]="card.progress" [showValue]="false" [style]="{ height: '0.5rem' }"></p-progressBar>
+        <span class="text-sm font-medium">
+          {{ card.seatsLeft }} seats left out of {{ card.totalSeats }}
+        </span>
+      </div>
+
+      <ng-template #footer>
+        <div class="flex flex-col gap-2 mt-4">
+          <p-button label="Book a Seat" severity="contrast" [rounded]="true" class="block"></p-button>
+          <p-button label="View Details" severity="contrast" [rounded]="true" outlined="true" class="block"></p-button>
+        </div>
+      </ng-template>
     </p-card>
   </div>
 </div>
+
