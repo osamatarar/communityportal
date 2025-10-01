@@ -28,4 +28,10 @@
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
 
+    <picklist [ShowDialog]="ShowAssignRoleDialog"
+              [HeaderName]="'Assign Role'"
+              url="Generic/exec/GetRolesByUserId"
+              [SPParams]="{userId : userId}">     
+    </picklist>
+
  <p-confirmdialog [style]="{ width: '450px' }" />

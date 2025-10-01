@@ -24,7 +24,7 @@ export class RoleComponent extends CommunityBaseComponent {
     
         selectedReferenceType :string ="Role";
         pathFormValue : any= null;
-        picklistid:any=null;
+        roleId:number =0;
         Columns : TableColumn[] = 
         [
           { field: 'RoleName', header: 'Role Name', sortable: true, style: 'min-width:16rem' },
@@ -73,7 +73,7 @@ export class RoleComponent extends CommunityBaseComponent {
         }
         else if(event.action =='assignRole') {
             this.ShowAssignRoleDialog = !this.ShowAssignRoleDialog;
-            this.picklistid=event.row.ID;
+            this.roleId=event.row.ID;
         }
         else if(event.action =='delete')
         {    

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreDropdownComponent } from '@/core/components/core.dropdown';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -10,6 +10,7 @@ import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { CommunityBaseComponent } from '../basecomponent';
+import { GenericHttpService } from '@/services/genericHttpSerivce';
 
 @Component({
   selector: 'app-project',
@@ -27,8 +28,8 @@ export class EventComponent extends CommunityBaseComponent {
     Columns : TableColumn[] =
     [
 
-      { field: 'StartDate', header: 'Creation Date', sortable: false, style: 'min-width:16rem', },
-      { field: 'CreatedBy', header: 'Created By', sortable: false, style: 'min-width:15rem', type:'date' },
+      { field: 'StartDate', header: 'Creation Date', sortable: false, style: 'min-width:16rem', type:'date'},
+      { field: 'CreatedBy', header: 'Created By', sortable: false, style: 'min-width:15rem'},
       { field: 'Name', header: 'Event Name', sortable: true, style: 'min-width:16rem' },
       { field: 'Location', header: 'Event Location', sortable: true, style: 'min-width:16rem' },
       {  field: 'Gender', header: 'Gender', sortable: false, style: 'min-width:15rem', },
@@ -43,13 +44,12 @@ export class EventComponent extends CommunityBaseComponent {
           label: 'Event Id',
           placeholder: 'Enter FullName',
           validators: { required: true, minLength: 3 },
-          value : "0002",
-          readonly : false,
+          readonly : true,
           group: 'first'
         },
         {
           type: 'text' as const,
-          name: 'Title',
+          name: 'Name',
           label: 'Event Name',
           placeholder: 'Enter Title',
           validators: { required: true, minLength: 3 },
@@ -90,7 +90,7 @@ export class EventComponent extends CommunityBaseComponent {
           fullWidth: false
         },
         {
-          type: 'text' as const,
+          type: 'number' as const,
           name: 'MinParticipantsRequired',
           label: 'Min. Participants Required',
           placeholder: 'Min. Participants Required',
@@ -98,7 +98,7 @@ export class EventComponent extends CommunityBaseComponent {
           fullWidth: false
         },
         {
-          type: 'text' as const,
+          type: 'number' as const,
           name: 'MaxParticipants',
           label: 'Max. Participants',
           placeholder: 'Max. Participants',
@@ -194,11 +194,37 @@ export class EventComponent extends CommunityBaseComponent {
   addNew(){
     this.ShowDialog = !this.ShowDialog;
     this.pathFormValue = {};
-    this.pathFormValue = {AccountType: 9};
+    this.pathFormValue = {Code: this.getRandomNDigits(4)};
   }
 
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
+  }
+
+  httpService: any = inject(GenericHttpService);
+  genederArray : any; 
+  protected override OnFormSubmit(event : any){
+   this.RefreshData = new Date(Date.now()).toString();
+   this.genederArray = event.Gender;
+  }
+
+
+  SaveFormId(eventId : any){
+
+   if(eventId){
+      this.httpService.post('generic/exec/UpsertEventGenderMapping',  {
+            "EventId": eventId,
+            "GenderIds": this.genederArray.toString()
+        })
+        .subscribe((data:any) => {
+          (data.IsSuccess)
+          {
+          
+           this.RefreshData = new Date(Date.now()).toString();
+          }
+
+    });
+   }
   }
 
 }

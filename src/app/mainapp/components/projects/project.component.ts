@@ -87,7 +87,7 @@ export class ProjectComponent extends CommunityBaseComponent {
           name: 'CommunityId',
           label: 'Main Community',
           placeholder: 'Select Community',
-          url : "User/GetReferenceTypes?id=6",
+          url : "User/GetReferenceTypes?id=11",
           group: 'thirdrow' ,
           fullWidth: false
         },
@@ -96,7 +96,7 @@ export class ProjectComponent extends CommunityBaseComponent {
           name: 'CommunityId',
           label: 'Sub Community',
           placeholder: 'Select SubComunity',
-          url : "User/GetReferenceTypes?id=6",
+          url : "User/GetReferenceTypes?id=12",
           group: 'fourthrow' ,
           fullWidth: false
         },
@@ -180,14 +180,7 @@ export class ProjectComponent extends CommunityBaseComponent {
   }
 
 
-  getRandomNDigits(n: number): number {
-    const min = Math.pow(10, n - 1);
-    const max = Math.pow(10, n) - 1;
-    return this.getRandomInt(min, max);
-  }
-  getRandomInt(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  
 
 
 }

@@ -8,31 +8,30 @@
         <!-- bind the real image url here -->
         <img src="https://pbs.twimg.com/media/FPAyOgFWYAI6t3d?format=jpg&name=4096x4096" alt="project image" class="image-placeholder" />
         <div class="image-footer">
-          <span class="project-id">{{ project.Code }}</span>
+          <span class="project-id">{{ project?.Code }}</span>
         </div>
       </div>
 
       <!-- RIGHT : Text Content -->
       <div class="content-box">
-        <h2 class="title">{{ project.Title }}</h2>
+        <h2 class="title">{{ project?.Title }}</h2>
 
         <div class="info">
           <i class="pi pi-calendar"></i>
-          <span>{{ project.StartDate | date:'dd-MM-yyyy'  }} – {{ project.EndDate | date:'dd-MM-yyyy'  }}</span>
+          <span>{{ project?.StartDate | date:'dd-MM-yyyy'  }} – {{ project?.EndDate | date:'dd-MM-yyyy'  }}</span>
         </div>
 
         <div class="info">
           <i class="pi pi-map-marker"></i>
-          <span>{{ project.Location }}</span>
+          <span>{{ project?.Location }}</span>
         </div>
 
         <p-divider class="divider"></p-divider>
 
         <p class="description">
-          {{ project.Description }}
+          {{ project?.Description }}
         </p>
       </div>
-
     </div>
   </p-card>
 </div>
@@ -48,6 +47,7 @@
                 [SPParams]="{ProjectID:projectID}"
                 [Columns]="Columns"
                 [Actions]="Actions"
+                [RefreshData]="RefreshData"
                 (checkedChange)="onToggleChange($event)"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
@@ -57,6 +57,7 @@
                   [HeaderName]="'Add new Campaigns'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
+                  (submitForm)="OnFormSubmit($event)"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
 

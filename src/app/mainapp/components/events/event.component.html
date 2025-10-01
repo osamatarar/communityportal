@@ -19,7 +19,8 @@
                   [HeaderName]="'Add new Event'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
-                   (submitForm)="OnFormSubmit($event)"
+                  (submitForm)="OnFormSubmit($event)"
+                  (saveFormId) ="SaveFormId($event)"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
 

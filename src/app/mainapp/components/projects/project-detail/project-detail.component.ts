@@ -30,8 +30,8 @@ export class ProjectDetailComponent extends CommunityBaseComponent implements On
     [
       { field: 'Name', header: 'Compain Name', sortable: true, style: 'min-width:10rem' },
       { field: 'ProjectName', header: 'Project', sortable: true, style: 'min-width:16rem' },
-      { field: 'InsertDate', header: 'Creation Date', sortable: true, style: 'min-width:16rem' },
-      { field: 'StartDate', header: 'Start Date', sortable: false, style: 'min-width:16rem', },
+      { field: 'InsertDate', header: 'Creation Date', sortable: true, style: 'min-width:16rem' , type:'date' },
+      { field: 'StartDate', header: 'Start Date', sortable: false, style: 'min-width:16rem',  type:'date'},
       { field: 'EndDate', header: 'End Date', sortable: false, style: 'min-width:15rem', type:'date' },
       { field: 'Active', header: 'Disable/Enable', sortable: false, style: 'min-width:15rem', },
     ];

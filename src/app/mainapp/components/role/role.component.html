@@ -22,9 +22,9 @@
     </dynamic-form>
 
     <picklist [ShowDialog]="ShowAssignRoleDialog"
-              [HeaderName]="'Assign Menu'"
-              url="user/GetMenuByRoleId?id={{picklistid}}"
-              saveurl="user/UpdateMenuByRoleId?id=1221">     
+              [HeaderName]="'Assign Permission'"
+              url="Generic/exec/GetMenusForRole"
+              [SPParams]="{roleId : roleId}">     
     </picklist>
 
  <p-confirmdialog [style]="{ width: '450px' }" />

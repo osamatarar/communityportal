@@ -38,6 +38,7 @@ export class DynamicFormComponent implements OnChanges {
     @Input() HeaderName :string ='';
 
     @Output() submitForm = new EventEmitter<any>();
+    @Output() saveFormId = new EventEmitter<any>();
     @Output() toggleDialog = new EventEmitter<boolean>();
 
 
@@ -72,6 +73,7 @@ export class DynamicFormComponent implements OnChanges {
           (data.IsSuccess)
           {
            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Update Successfully' });
+           this.saveFormId.emit(data.Result.Id);
           }});
         }
         else {
@@ -79,6 +81,7 @@ export class DynamicFormComponent implements OnChanges {
           (data.IsSuccess)
           {
            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Save Successfully' });
+           this.saveFormId.emit(data.Result.Id);
           }
 
         });
@@ -89,6 +92,16 @@ export class DynamicFormComponent implements OnChanges {
         } else {
         this.form.markAllAsTouched();
         }
+    }
+
+
+    onFieldChange(field: any, event: Event) {
+      if (field.type === 'number') {
+        const input = event.target as HTMLInputElement;
+        let value: any = input.value;
+        value = value ? parseFloat(value) : null;
+        this.form.get(field.name)?.setValue(value, { emitEvent: true });
+      }
     }
 
 

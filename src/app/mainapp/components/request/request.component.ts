@@ -84,7 +84,7 @@ export class RequestComponent {
     addNew() {
         this.ref = this.dialogService.open(NewComponent, {
             header: 'New Request',
-            width: '50vw',
+            width: '90vw',
             breakpoints: {
                 '960px': '75vw',
                 '640px': '90vw'

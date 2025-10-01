@@ -16,15 +16,17 @@ import { Dialog } from 'primeng/dialog';
 export class picklistComponent implements OnChanges {
     httpService: any = inject(GenericHttpService);
     @Input() HeaderName: string = '';
-    source: any[] = [];
-    @Input() target: any[] = [];
     @Input() url: string = '';
     @Input() saveurl: string = '';
     @Output() onSave = new EventEmitter<any[]>();
-    @Input() displayColumn: string = '';
     @Input() SPParams: Record<string, any> = {};
     @Input() ShowDialog: boolean = false;
     @Output() toggleDialog = new EventEmitter<boolean>();
+   
+    source: any[] = [];
+    target: any[] = [];
+   
+    
     ngOnChanges() {
         if (this.url) {
             this.fetchData();
@@ -33,27 +35,26 @@ export class picklistComponent implements OnChanges {
     constructor(
       private cdr: ChangeDetectorRef
     ) {}
+
     fetchData() {
-        this.httpService.getAll(this.url).subscribe((data: any) => {
+
+        this.httpService.post(this.url ,this.SPParams).subscribe((data: any) => {
             if (data.IsSuccess) {
-                this.source = data.Result.UnAssigned;
-                this.target = data.Result.Assigned;
+                console.log(data.Result);
+                this.source = data.Result.filter((x: { Unassigned: null; })=>x.Unassigned ==null);
+                this.target = data.Result.filter((x: { Unassigned: null; })=>x.Unassigned !=null);
               this.cdr.markForCheck();
             } else {
                 this.source = [];
                 this.target = [];
             }
-              
         });
     }
     
     saveSelection() {
        this.onSave.emit(this.target);
 
-        // this.httpService.post(this.saveurl,this.target).subscribe((response: any) => { 
-              
-        //      });
-        // this.hideDialog();
+
     }
     hideDialog() {
         this.ShowDialog = false;

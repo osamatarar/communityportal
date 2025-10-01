@@ -10,6 +10,7 @@ import { DynamicFormComponent } from '@/core/components/core.form/dynamic-form.c
 import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { CommunityBaseComponent } from '../basecomponent';
 
 @Component({
   selector: 'app-venues',
@@ -18,9 +19,9 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
   templateUrl: './venues.component.html',
   styleUrls: ['./venues.component.css']
 })
-export class VenuesComponent  {
+export class VenuesComponent extends CommunityBaseComponent  {
 
- constructor(private confirmationService: ConfirmationService) {}
+
     selectedReferenceType :string ="Venues";
     pathFormValue : any= null;
 
@@ -40,7 +41,7 @@ export class VenuesComponent  {
     controls:   [
         {
           type: 'text' as const,
-          name: 'ID',
+          name: 'Code',
           label: 'Event ID',
           placeholder: 'Enter Event Id',
           validators: { required: true },
@@ -158,7 +159,7 @@ export class VenuesComponent  {
   addNew(){
     this.ShowDialog = !this.ShowDialog;
     this.pathFormValue = {};
-    this.pathFormValue = {AccountType: 9};
+    this.pathFormValue = {Code: this.getRandomNDigits(4)};
   }
 
   onSelectionChange(data:any){

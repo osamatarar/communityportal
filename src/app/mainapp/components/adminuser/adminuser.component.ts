@@ -11,11 +11,12 @@ import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { CommunityBaseComponent } from '../basecomponent';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { picklistComponent } from '@/core/components/core.Picklist/picklist.component';
 
 @Component({
   selector: 'admin-user',
   standalone: true,
-  imports: [CommonModule, SelectButtonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
+  imports: [CommonModule, picklistComponent, SelectButtonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
   templateUrl: './adminuser.component.html'
   
 })
@@ -25,6 +26,10 @@ export class AdminUserComponent extends CommunityBaseComponent {
     selectedAccountType: string = '9';
     selectedReferenceType :string ="Users";
     pathFormValue : any= null;
+
+    ShowAssignRoleDialog:boolean=false;
+
+    userId: number =0;
 
     Columns : TableColumn[] = 
     [
@@ -95,7 +100,8 @@ export class AdminUserComponent extends CommunityBaseComponent {
 
     Actions: TableAction[] = [
     { icon: 'pi pi-pencil', severity: 'info', action: 'edit' },
-    { icon: 'pi pi-trash', severity: 'danger', action: 'delete',  }
+    { icon: 'pi pi-trash', severity: 'danger', action: 'delete',  },
+    { icon: 'pi pi-sitemap', severity: 'info', action: 'assignRole' }
     
   ];
 
@@ -118,6 +124,11 @@ export class AdminUserComponent extends CommunityBaseComponent {
                 }
             });
     }
+
+       else if(event.action =='assignRole') {
+            this.ShowAssignRoleDialog = !this.ShowAssignRoleDialog;
+            this.userId=event.row.ID;
+        }
   }
 
 
