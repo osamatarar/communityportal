@@ -1,0 +1,40 @@
+<p-toolbar>
+    <ng-template #start>
+        <h4> Dashboard </h4>
+    </ng-template>
+</p-toolbar>
+<div class="grid grid-cols-12 gap-4">
+    <div class="col-span-12">
+        <app-statcards></app-statcards>
+    </div>
+    <div class="col-span-12 px-3 pt-4">
+        <div class="flex justify-between items-center w-full">
+            <h5>Active Campaigns</h5>
+            <div class="flex justify-center">
+                <p-button label="View All" link  />
+            </div>
+        </div>
+        <div class="col-span-12">
+            <app-campaigns></app-campaigns>
+        </div>
+    </div>
+    <div class="col-span-12 lg:col-span-6 xl:col-span-8 px-3 pt-4">
+        <div class="flex">
+            <h5>Khums</h5>
+        </div>
+        <div class="flex w-full">
+            <app-khums class="flex w-full flex-row" style="height: 600px;"></app-khums>
+        </div>
+    </div>
+    <div class="col-span-12 lg:col-span-6 xl:col-span-4 px-3 pt-4">
+        <div class="flex justify-between items-center w-full">
+            <h5>Requests</h5>
+            <div class="flex justify-center">
+                <p-button label="View All" link />
+            </div>
+        </div>
+        <div class="col-span-12">
+            <app-requests></app-requests>
+        </div>
+    </div>
+</div>

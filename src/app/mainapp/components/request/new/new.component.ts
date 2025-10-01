@@ -5,42 +5,26 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CommonModule } from '@angular/common';
-
+import { StepperModule } from 'primeng/stepper';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { TextareaModule } from 'primeng/textarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DatePickerModule } from 'primeng/datepicker';
+import { FileUploadModule } from 'primeng/fileupload';
 @Component({
     selector: 'app-new',
     templateUrl: './new.component.html',
     styleUrls: ['./new.component.css'],
     standalone: true,
-    imports: [CommonModule, SelectModule, InputTextModule, ButtonModule, ReactiveFormsModule]
+    imports: [CommonModule, SelectModule, InputTextModule, ButtonModule, ReactiveFormsModule, StepperModule, MultiSelectModule, TextareaModule, InputNumberModule, ToggleButtonModule, DatePickerModule, FileUploadModule]
 })
 export class NewComponent implements OnInit {
     form!: FormGroup;
-    selectedRType: any;
-
-    RequestTypes = [
-        { name: 'LPO (guarantees to hospitals in case of Hospitalization)', value: 'LPO' },
-        { name: 'Medical Insurance Plans', value: 'MedicalInsurance' },
-        { name: 'Life Insurance Plans', value: 'LifeInsurance' },
-        { name: 'Rebates on School Fees', value: 'SchoolRebates' },
-        { name: 'Loans for Higher Education', value: 'EducationLoan' },
-        { name: 'Loans for Business Startups', value: 'BusinessStartupLoan' },
-        { name: 'Loans for Business Assistance', value: 'BusinessAssistLoan' }
-    ];
 
     constructor(private ref: DynamicDialogRef) {}
 
-    ngOnInit() {
-        this.form = new FormGroup({
-            requestType: new FormControl(null),
-            hospitalName: new FormControl(''),
-            policyNumber: new FormControl(''),
-            beneficiaryName: new FormControl('')
-        });
-    }
-
-    onRequestTypeChange(event: any) {
-        this.selectedRType = event.value.value;
-    }
+    ngOnInit() {}
 
     hideDialog() {
         this.ref.close();

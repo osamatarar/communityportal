@@ -1,0 +1,8 @@
+svg path {
+    opacity:0.5;
+    transition: filter 0.3s, fill 0.3s;
+}
+svg path:hover {
+    opacity:1;
+    cursor:pointer;
+}

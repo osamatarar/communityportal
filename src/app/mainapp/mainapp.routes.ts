@@ -16,9 +16,13 @@ import { ForumsComponent } from "./components/forums/forums.component";
 import { DetailPageComponent } from "./components/venues/DetailPage/DetailPage.component";
 import { RequestComponent } from "./components/request/request.component";
 import { CommitteeComponent } from "./components/committee/committee.component";
+import { AdminComponent } from "./components/dashboards/admin/admin.component";
+import { UserComponent } from "./components/dashboards/user/user.component";
 import { RoleComponent } from "./components/role/role.component";
 
 export default [
+    { path: 'admindashboard', component: AdminComponent },
+    { path: 'userdashboard', component: UserComponent },
     { path: 'dropdowndata', component: DropdownDataComponent },
     { path: 'adminuser', component: AdminUserComponent },
     { path: 'project', component: ProjectComponent },
@@ -35,6 +39,8 @@ export default [
     { path: 'userforum/detail', component: DetailpageComponent },
     { path: 'uservenues', component: UserVenuesComponent },
     { path: 'usercompaings', component: UserCompaingComponent },
+    { path: 'usercompaings', component: UserCompaingComponent },
+    { path: 'committee', component: CommitteeComponent },
     { path: 'usercompaings', component: UserCompaingComponent},
     { path: 'committee', component: CommitteeComponent},
     { path: 'role', component: RoleComponent},
