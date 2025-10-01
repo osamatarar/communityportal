@@ -44,7 +44,7 @@ export class ProjectComponent extends CommunityBaseComponent {
           label: 'Code',
           placeholder: 'Enter Code',
           validators: { required: true },
-          value : "80",
+          readonly : true,
           group: 'first'
         },
         {
@@ -172,11 +172,22 @@ export class ProjectComponent extends CommunityBaseComponent {
   addNew(){
     this.ShowDialog = !this.ShowDialog;
     this.pathFormValue = {};
-    this.pathFormValue = {AccountType: 9};
+    this.pathFormValue = {Code: this.getRandomNDigits(3)};
   }
 
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
   }
+
+
+  getRandomNDigits(n: number): number {
+    const min = Math.pow(10, n - 1);
+    const max = Math.pow(10, n) - 1;
+    return this.getRandomInt(min, max);
+  }
+  getRandomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
 
 }

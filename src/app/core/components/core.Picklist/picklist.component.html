@@ -1,0 +1,30 @@
+ <p-dialog [(visible)]="ShowDialog" [style]="{ width: '700px' }" [header]="HeaderName" [modal]="true">
+     <ng-template #content>
+        <p-picklist 
+                [source]="source" 
+                [target]="target" 
+                [dragdrop]="true" 
+                [responsive]="true" 
+                filterBy="Name" 
+                sourceFilterPlaceholder="Search by name" 
+                targetFilterPlaceholder="Search by name" 
+                breakpoint="1400px" 
+                scrollHeight="20rem">
+<ng-template let-option pTemplate="item">
+    <div class="flex flex-wrap p-1 items-center gap-4 w-full">
+        <div class="flex-1 flex flex-col">
+            <span class="font-medium text-sm">{{ option.Name }}</span>
+            <span class="text-surface-500 dark:text-surface-400">{{ option.category }}</span>
+        </div>
+    </div>
+</ng-template>
+
+        </p-picklist>
+    </ng-template>
+    <ng-template #footer>
+        <div class="flex gap-2 pt-4">
+            <p-button label="Cancel" variant="outlined" severity="contrast" [rounded]="true" styleClass="btn-outline-custom" (click)="hideDialog()"></p-button>
+            <p-button label="Save"  severity="contrast" [rounded]="true" styleClass="btn-solid-custom" (click)="saveSelection()"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>

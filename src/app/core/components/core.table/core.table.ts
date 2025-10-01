@@ -186,6 +186,7 @@ export class CoreTable implements OnChanges {
       changes['SortColumns'] ||
       changes['pageNumber'] ||
       changes['pageSize'] || changes['RefreshData']
+    || changes['Columns']
     ) {
       this.gridConfig = this.buildGridConfig();
        this.loadData();

@@ -59,6 +59,7 @@
                                                 #fileUpload
                                                         name="demo[]"
                                                         (onUpload)="onUpload($event)"
+                                                        (onRemoveUploadedFile)="onFileRemove($event)"
                                                         [multiple]="true"
                                                         accept="image/*"
                                                         maxFileSize="1000000"

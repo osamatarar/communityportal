@@ -5,7 +5,7 @@ import { LoaderService } from './../services/loaderService';
 
 export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   const loadingService = inject(LoaderService);
-    const token = localStorage.getItem('authToken');
+  const token = localStorage.getItem('authToken');
   const skipLoaderByHeader = req.headers.get('X-Skip-Loader') === 'true';
   if (skipLoaderByHeader) {
     req = req.clone({
@@ -13,11 +13,16 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
     });
   }
 
+  const skipTokenByHeader = req.headers.get('X-Skip-Token') === 'true';
+  const isExternalUpload = req.url.includes('https://www.primefaces.org/cdn/api/upload.php');
+
+  if (!skipTokenByHeader && !isExternalUpload) {
     req = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
 
 if (!skipLoaderByHeader) {
     loadingService.show();

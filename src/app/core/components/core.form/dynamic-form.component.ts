@@ -17,6 +17,7 @@ import { DatePickerModule } from 'primeng/datepicker';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FilePreviewComponent } from '../filepreview/fileperview.component';
 import { CoreCheckBoxComponent } from '../core.checkbox';
+import { DocumentService } from '@/core/services/document.service';
 
 
 @Component({
@@ -136,27 +137,19 @@ export class DynamicFormComponent implements OnChanges {
     }
 
     uploadedFiles: any[] = [];
-    onUpload(event: any) {
-          for (const file of event.files) {
-      const formData = new FormData();
-      formData.append('file', file, file.name);
+    docService = inject(DocumentService)
 
-      this.httpService.post('user/upload', formData)
-        .subscribe({
-          next: (res: { filePath: any; }) => {
-            this.uploadedFiles.push({
-              name: file.name,
-              objectURL: res.filePath   // returned from backend
-            });
-            this.messageService.add({ severity: 'success', summary: 'Uploaded', detail: file.name });
-          },
-          error: () => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: file.name });
-          }
-        });
+    async onUpload(event: any) {
+    if (event.files && event.files.length > 0) {
+      await this.docService.saveFiles(event.files);
+      this.uploadedFiles = this.docService.getFiles();
     }
     }
 
+  onFileRemove(event: any) {
+    this.docService.deleteFile(event.file.name);
+    this.uploadedFiles = this.docService.getFiles();
+ }
 
     loadAttachments() {
     this.httpService.getAll('user/GetFiles')

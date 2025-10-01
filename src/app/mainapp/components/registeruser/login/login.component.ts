@@ -50,10 +50,10 @@ export class LoginComponent implements OnInit {
               if (data.IsSuccess) {
                 this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User login Successfully' });
                 localStorage.setItem('authToken', data.Result.Token);
-
-               setTimeout(() => {
-                  this.gotoHomePage();
-               }, 1000);
+               this.gotoHomePage();
+              //  setTimeout(() => {
+              //     this.gotoHomePage();
+              //  }, 1000);
               }
               else {
                  this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Username & password.'});

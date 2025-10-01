@@ -1,31 +1,30 @@
 <p-toolbar >
         <ng-template #start> <h4> {{selectedReferenceType}} </h4>
-     <p-selectbutton [options]="stateOptions"
-                    [(ngModel)]="selectedAccountType"
-                     optionLabel="label"
-                     optionValue="value"
-                     aria-labelledby="basic"
-                    (onChange)="onAccountTypeChange($event)" />
         </ng-template>
         <ng-template #end>
-            <p-button [rounded]="true" label="New User" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+            <p-button [rounded]="true" label="New Role" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
         </ng-template>
 </p-toolbar>
-    <core-table [TableSPName]="'GetUsers'"
+    <core-table [TableSPName]="'GetRoles'"
                 [Columns]="Columns"
                 [Actions]="Actions"
                 [RefreshData]="RefreshData"
-                [SPParams]="{acountTypeId: selectedAccountType}"
                 (actionClicked)="onActionTriggered($event)">
     </core-table>
 
-    <dynamic-form [apiName]="'generic/UmUser'"
+    <dynamic-form [apiName]="'generic/UmRole'"
                   [ShowDialog]="ShowDialog"
-                  [HeaderName]="'Add new user'"
+                  [HeaderName]="'Add new role'"
                   [config]="FormConfig"
                   [patchData]="pathFormValue"
                   (submitForm)="OnFormSubmit($event)"
                   (toggleDialog)="toggleDialog($event)">
     </dynamic-form>
+
+    <picklist [ShowDialog]="ShowAssignRoleDialog"
+              [HeaderName]="'Assign Menu'"
+              url="user/GetMenuByRoleId?id={{picklistid}}"
+              saveurl="user/UpdateMenuByRoleId?id=1221">     
+    </picklist>
 
  <p-confirmdialog [style]="{ width: '450px' }" />

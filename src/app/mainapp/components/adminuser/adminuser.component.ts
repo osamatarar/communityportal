@@ -10,17 +10,19 @@ import { TableAction } from '@/core/models/dynamic-field.model';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { CommunityBaseComponent } from '../basecomponent';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @Component({
   selector: 'admin-user',
   standalone: true,
-  imports: [CommonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
+  imports: [CommonModule, SelectButtonModule, ButtonModule, DynamicFormComponent, ConfirmDialog, ToolbarModule, FormsModule ,CoreTable],
   templateUrl: './adminuser.component.html'
   
 })
 
 export class AdminUserComponent extends CommunityBaseComponent {
-
+   
+    selectedAccountType: string = '9';
     selectedReferenceType :string ="Users";
     pathFormValue : any= null;
 
@@ -29,7 +31,9 @@ export class AdminUserComponent extends CommunityBaseComponent {
       { field: 'FullName', header: 'Full Name', sortable: true, style: 'min-width:16rem' },
       { field: 'Email', header: 'Email', sortable: true, style: 'min-width:20rem' },
       { field: 'Mobile', header: 'Mobile', sortable: true, style: 'min-width:20rem' },
-      { field: 'DepartmentName', header: 'Department Name', sortable: false, style: 'min-width:20rem', },
+      { field: 'DepartmentName', header: 'Department Name', sortable: false, 
+        style:  'min-width:20rem' 
+       },
     ];
     
     FormConfig = {
@@ -130,6 +134,20 @@ export class AdminUserComponent extends CommunityBaseComponent {
   onSelectionChange(data:any){
      this.selectedReferenceType = data.name;
   }
+
+    stateOptions: any[] = [
+        { label: 'Internal', value: '9' },
+        { label: 'Community', value: '26' }
+    ];
+    onAccountTypeChange(event: any) {
+      const deptCol = this.Columns.find(c => c.field === 'DepartmentName');
+      if (deptCol) {
+        deptCol.style = this.selectedAccountType === '26' 
+          ? 'min-width:20rem; display:none' 
+          : 'min-width:20rem';
+      }
+      this.Columns = [...this.Columns];
+    }
 
 
 }
