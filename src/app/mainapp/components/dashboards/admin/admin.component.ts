@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ToolbarModule } from 'primeng/toolbar';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 import { StatcardsComponent } from './statcards/statcards.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { RequestsComponent } from './requests/requests.component';
 import { KhumsComponent } from './khums/khums.component';
-import { ToolbarModule } from 'primeng/toolbar';
-import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-admin',
