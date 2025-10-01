@@ -8,22 +8,23 @@ import { CommonModule } from '@angular/common';
 import { StepperModule } from 'primeng/stepper';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TextareaModule } from 'primeng/textarea';
-
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DatePickerModule } from 'primeng/datepicker';
+import { FileUploadModule } from 'primeng/fileupload';
 @Component({
     selector: 'app-new',
     templateUrl: './new.component.html',
     styleUrls: ['./new.component.css'],
     standalone: true,
-    imports: [CommonModule, SelectModule, InputTextModule, ButtonModule, ReactiveFormsModule, StepperModule, MultiSelectModule, TextareaModule]
+    imports: [CommonModule, SelectModule, InputTextModule, ButtonModule, ReactiveFormsModule, StepperModule, MultiSelectModule, TextareaModule, InputNumberModule, ToggleButtonModule, DatePickerModule, FileUploadModule]
 })
 export class NewComponent implements OnInit {
     form!: FormGroup;
 
     constructor(private ref: DynamicDialogRef) {}
 
-    ngOnInit() {
-
-    }
+    ngOnInit() {}
 
     hideDialog() {
         this.ref.close();
