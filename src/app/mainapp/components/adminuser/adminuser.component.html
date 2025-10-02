@@ -1,16 +1,14 @@
 <p-toolbar >
         <ng-template #start> <h4> {{selectedReferenceType}} </h4>
-     <p-selectbutton [options]="stateOptions"
-                    [(ngModel)]="selectedAccountType"
-                     optionLabel="label"
-                     optionValue="value"
-                     aria-labelledby="basic"
-                    (onChange)="onAccountTypeChange($event)" />
         </ng-template>
         <ng-template #end>
             <p-button [rounded]="true" label="New User" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
         </ng-template>
 </p-toolbar>
+<div class="flex w-100 my-4">
+    <p-selectbutton [options]="stateOptions" [(ngModel)]="selectedAccountType" optionLabel="label" optionValue="value"
+        aria-labelledby="basic" (onChange)="onAccountTypeChange($event)" />
+</div>
     <core-table [TableSPName]="'GetUsers'"
                 [Columns]="Columns"
                 [Actions]="Actions"
@@ -31,7 +29,7 @@
     <picklist [ShowDialog]="ShowAssignRoleDialog"
               [HeaderName]="'Assign Role'"
               url="Generic/exec/GetRolesByUserId"
-              [SPParams]="{userId : userId}">     
+              [SPParams]="{userId : userId}">
     </picklist>
 
  <p-confirmdialog [style]="{ width: '450px' }" />
