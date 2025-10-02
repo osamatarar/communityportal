@@ -41,82 +41,120 @@ export class VenuesComponent extends CommunityBaseComponent  {
     controls:   [
         {
           type: 'text' as const,
-          name: 'Code',
-          label: 'Event ID',
-          placeholder: 'Enter Event Id',
-          validators: { required: true },
-          value : "80",
-          readonly : true,
-          group: 'first'
-        },
-        {
-          type: 'text' as const,
           name: 'Name',
-          label: 'Event Name',
-          placeholder: 'Enter Event Name',
+          label: 'Venue Name',
+          placeholder: 'Enter Venue Name',
           validators: { required: true, minLength: 3 },
           group: 'first'
         },
         {
-          type: 'date' as const,
-          name: 'StartDate',
-          label: 'Project Start Date',
-          placeholder: 'Enter Start Date',
+          type: 'text' as const,
+          name: 'Address',
+          label: 'Address',
+          placeholder: 'Enter Address',
           validators: { "required": true } ,
           requiredSymbol : true,
-          group: 'secondrow',
+          group: 'first',
           fullWidth: false
         },
         {
-          type: 'date' as const,
-          name: 'EndDate',
-          label: 'Project End Date',
-          placeholder: 'Enter End Dat',
+          type: 'select' as const,
+          name: 'GuestCountId',
+          label: 'Guest Count',
+          placeholder: 'Enter Guest Count',
           validators: { required: true },
           group: 'secondrow' ,
-          fullWidth: false
-        },
-        {
-          type: 'text' as const,
-          name: 'Location',
-          label: 'Project Location',
-          placeholder: 'Enter Project Location',
-          group: 'thirdrow' ,
+          url : "User/GetReferenceTypes?id=13",
           fullWidth: false
         },
         {
           type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Main Community',
-          placeholder: 'Select Community',
-          url : "User/GetReferenceTypes?id=6",
-          group: 'thirdrow' ,
+          name: 'AgeRangeId',
+          label: 'Age Range',
+          placeholder: 'Enter Age Range',
+          group: 'secondrow' ,
+          url : "User/GetReferenceTypes?id=14",
           fullWidth: false
         },
-        {
-          type: 'select' as const,
-          name: 'CommunityId',
-          label: 'Sub Community',
-          placeholder: 'Select SubComunity',
-          url : "User/GetReferenceTypes?id=6",
-          group: 'fourthrow' ,
-          fullWidth: false
-        },
-
         {
           type: 'textarea' as const,
           name: 'Description',
-          label: 'Project Description',
-          placeholder: 'Text  here....',
-          group: 'fifthrow' ,
+          label: 'Description',
+          placeholder: 'Description',
+          group: 'fourthrow' ,
           fullWidth: true
         },
         {
+          type: 'file' as const,
+          name: 'documentId',
+          label: 'Project Picture',
+          group: 'fifthrow' ,
+          fullWidth: true
+        },
+
+        {
           type: 'text' as const,
-          name: 'AccountTypeId',
-          label: 'Description',
-          placeholder: 'Enter Description',
-          hidden : true
+          name: 'MultiMedia',
+          label: 'Multi Media',
+          placeholder: 'Enter MultiMedia',
+          group: 'sixthrow' ,
+          fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'MusicSystem',
+          label: 'Music System',
+          placeholder: 'Enter MusicSystem',
+           group: 'sixthrow' ,
+           fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'HiTea',
+          label: 'HiTea',
+          placeholder: 'Enter HiTea',
+           group: 'seventhrow' ,
+           fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'Dinner',
+          label: 'Dinner',
+          placeholder: 'Enter Dinner',
+           group: 'seventhrow' ,
+           fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'Chairs',
+          label: 'Chairs',
+          placeholder: 'Enter Chairs',
+          group: 'eighthrow' ,
+           fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'Lunch',
+          label: 'Lunch',
+          placeholder: 'Enter Lunch',
+           group: 'eighthrow' ,
+           fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'Sofa',
+          label: 'Sofa',
+          placeholder: 'Enter Sofa',
+           group: 'ninthrow' ,
+           fullWidth: false
+        },
+        {
+          type: 'text' as const,
+          name: 'Tables',
+          label: 'Tables',
+          placeholder: 'Enter Tables',
+           group: 'ninthrow' ,
+           fullWidth: false
         }
 
       ]
