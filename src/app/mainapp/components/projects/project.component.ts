@@ -22,7 +22,7 @@ import { CommunityBaseComponent } from '../basecomponent';
 
 export class ProjectComponent extends CommunityBaseComponent {
     selectedReferenceType :string ="Projects List";
-    pathFormValue : any= null;
+    pathFormValue: any = null;
 
     Columns : TableColumn[] =
     [
@@ -44,7 +44,7 @@ export class ProjectComponent extends CommunityBaseComponent {
           label: 'Code',
           placeholder: 'Enter Code',
           validators: { required: true },
-          readonly : true,
+          readonly: true,
           group: 'first'
         },
         {
@@ -180,7 +180,7 @@ export class ProjectComponent extends CommunityBaseComponent {
   }
 
 
-  
+
 
 
 }
