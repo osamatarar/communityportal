@@ -1,0 +1,18 @@
+.signature-container {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 8px;
+}
+
+.signature-canvas {
+  border: 1px dashed #999;
+  width: 100%;
+  height: 200px;
+  touch-action: none; /* important for mobile drawing */
+}
+
+.signature-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}

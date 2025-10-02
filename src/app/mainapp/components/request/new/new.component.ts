@@ -12,12 +12,13 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DatePickerModule } from 'primeng/datepicker';
 import { FileUploadModule } from 'primeng/fileupload';
+import { SignaturepadComponent } from '../../signaturepad/signaturepad.component';
 @Component({
     selector: 'app-new',
     templateUrl: './new.component.html',
     styleUrls: ['./new.component.css'],
     standalone: true,
-    imports: [CommonModule, SelectModule, InputTextModule, ButtonModule, ReactiveFormsModule, StepperModule, MultiSelectModule, TextareaModule, InputNumberModule, ToggleButtonModule, DatePickerModule, FileUploadModule]
+    imports: [CommonModule, SelectModule, InputTextModule, ButtonModule, ReactiveFormsModule, StepperModule, MultiSelectModule, TextareaModule, InputNumberModule, ToggleButtonModule, DatePickerModule, FileUploadModule, SignaturepadComponent]
 })
 export class NewComponent implements OnInit {
     form!: FormGroup;

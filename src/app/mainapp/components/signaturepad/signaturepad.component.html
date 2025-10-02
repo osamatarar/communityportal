@@ -1,0 +1,10 @@
+<div class="signature-container w-full">
+    <canvas #signatureCanvas class="signature-canvas"></canvas>
+    <div class="signature-buttons">
+        <p-button severity="secondary" [rounded]="true" (click)="clearSignature()">Clear</p-button>
+        <p-button severity="secondary" [rounded]="true" (click)="saveAsPNG()">Save as PNG</p-button>
+        <p-button severity="secondary" [rounded]="true" (click)="saveAsJPG()">Save as JPG</p-button>
+        <p-button severity="secondary" [rounded]="true" (click)="saveAsSVG()">Save as SVG</p-button>
+        <p-button severity="secondary" [rounded]="true" (click)="saveAsSVGWithBg()">Save as SVG with background</p-button>
+    </div>
+</div>
