@@ -34,11 +34,10 @@ private eventImages = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZK-p67DLAsUfWLk1tmQ_7xRjh3a4tyUnY_A&s',
     'https://www.biztoday.news/wp-content/uploads/2018/01/Abacus-empowers-entrepreneurs-to-contribute-to-Pakistan%E2%80%99s-digital-transformation.jpg',
     'https://dailytimes.com.pk/assets/uploads/2021/06/29/JAbacus-LCCI-Presidents-Award-2021.jpg',
-    'https://images.unsplash.com/photo-1581091012184-5c92d4b8e9b3?ixlib=rb-4.0.3&q=80&w=1200',
-    'https://images.unsplash.com/photo-1605902711622-cfb43c4437d9?ixlib=rb-4.0.3&q=80&w=1200'
+
   ];
 
-  cards = Array.from({ length: 7 }).map((_, i) => ({
+  cards = Array.from({ length: 5 }).map((_, i) => ({
     title: `Tech Conference ${i + 1}`,
     date: this.getRandomDateRange(),
     location: this.getRandomLocation(),

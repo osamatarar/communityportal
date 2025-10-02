@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
               if (data.IsSuccess) {
                 this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User login Successfully' });
                 localStorage.setItem('authToken', data.Result.Token);
-               this.gotoHomePage();
+               this.gotoHomePage(data.Result.redirectUrl);
               //  setTimeout(() => {
               //     this.gotoHomePage();
               //  }, 1000);
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  gotoHomePage(){
-   this.router.navigate(['/']);
+  gotoHomePage(url :string){
+   this.router.navigate([url]);
   }
 }
