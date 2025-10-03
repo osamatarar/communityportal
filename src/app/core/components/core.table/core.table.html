@@ -58,16 +58,18 @@
                         }
                     }
                     <td>
-                 @for (action of Actions; track action.action) {
-                            <p-button
-                            severity="contrast"
-                            [icon]="action.icon"
-                            [rounded]="false"
-                            [outlined]="false"
-                            class="mr-2"
-                            (click)="onAction(action, data)">
-                            </p-button>
-          }    </td>
+                        <div class="flex items-center gap-2 flex-row">
+                            @for (action of Actions; track action.action) {
+                                <p-button
+                                severity="contrast"
+                                [icon]="action.icon"
+                                [rounded]="false"
+                                [outlined]="false"
+                                (click)="onAction(action, data)">
+                                </p-button>
+                            }
+                        </div>
+                    </td>
                 </tr>
             </ng-template>
 </p-table>
