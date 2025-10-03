@@ -9,22 +9,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 @Component({
     selector: 'core-checkbox',
     standalone: true,
-    imports: [CommonModule, FormsModule, SelectModule, ProgressSpinnerModule,CheckboxModule],
+    imports: [CommonModule, FormsModule, SelectModule, ProgressSpinnerModule, CheckboxModule],
     template: `
-        <div class="w-full">
+        <div class="w-full flex gap-2 flex-row mt-4">
             @for (opt of options; track opt.value) {
-            <p-checkbox
-                [inputId]="'gender-' + opt.value"
-                [ngModel]="innerValue"
-                [value]="opt.code"
-                (ngModelChange)="onValueChange($event)"
-                (onChange)="onSelectionChange($event)"
-                [disabled]="disabled"
-                appendTo="body"
-                class="w-full"
-                >
-            </p-checkbox>
-            <label [for]="'gender-' + opt.value">{{ opt.name }}</label>
+                <p-checkbox [inputId]="'gender-' + opt.value" [ngModel]="innerValue" [value]="opt.code" (ngModelChange)="onValueChange($event)" (onChange)="onSelectionChange($event)" [disabled]="disabled" appendTo="body" class="w-full"> </p-checkbox>
+                <label [for]="'gender-' + opt.value">{{ opt.name }}</label>
             }
         </div>
     `,

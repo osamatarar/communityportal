@@ -4,7 +4,7 @@
         <ng-template #start> <h4> {{selectedReferenceType}} </h4>
         </ng-template>
         <ng-template #end>
-            <p-button label="All Forums" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+            <p-button label="All Forums" [rounded]="true" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
         </ng-template>
     </p-toolbar>
     <core-table [TableSPName]="'GetForums'"
@@ -24,5 +24,3 @@
     </dynamic-form>
 
  <p-confirmdialog [style]="{ width: '450px' }" />
-
-
