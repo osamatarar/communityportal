@@ -19,6 +19,7 @@ import { CommitteeComponent } from "./components/committee/committee.component";
 import { AdminComponent } from "./components/dashboards/admin/admin.component";
 import { UserComponent } from "./components/dashboards/user/user.component";
 import { RoleComponent } from "./components/role/role.component";
+import { LawajamComponent } from "./components/lawajam/lawajam.component";
 
 export default [
     { path: 'admindashboard', component: AdminComponent },
@@ -41,8 +42,9 @@ export default [
     { path: 'usercompaings', component: UserCompaingComponent },
     { path: 'usercompaings', component: UserCompaingComponent },
     { path: 'committee', component: CommitteeComponent },
-    { path: 'usercompaings', component: UserCompaingComponent},
-    { path: 'committee', component: CommitteeComponent},
-    { path: 'role', component: RoleComponent},
+    { path: 'usercompaings', component: UserCompaingComponent },
+    { path: 'committee', component: CommitteeComponent },
+    { path: 'lawajam', component: LawajamComponent },
+    { path: 'role', component: RoleComponent },
     { path: '**', redirectTo: '/notfound' }
 ] as Routes;

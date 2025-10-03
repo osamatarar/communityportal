@@ -5,7 +5,7 @@
                 <!-- Group rendering -->
                 @for (group of getGroups(config.controls); track group.name) {
                     @if (group.name !== 'fullWidth') {
-                        <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex flex-col md:flex-row gap-4">
                         @for (field of group.controls; track field.name) {
                             @if (!field.hidden) {
                                 <div class="flex flex-wrap  w-full add-space">

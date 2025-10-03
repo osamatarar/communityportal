@@ -1,0 +1,13 @@
+<p-toolbar>
+    <ng-template #start>
+        <h4> {{selectedReferenceType}} </h4>
+    </ng-template>
+    <ng-template #end>
+        <p-button [rounded]="true" label="New Lawajam" icon="pi pi-plus" severity="contrast" class="mr-2" (onClick)="addNew()" />
+    </ng-template>
+</p-toolbar>
+<core-table [TableSPName]="'GetUsers'" [Columns]="Columns" [Actions]="Actions" [RefreshData]="RefreshData"
+    [SPParams]="{acountTypeId: 9}" (actionClicked)="onActionTriggered($event)">
+</core-table>
+<app-new [ShowDialog]="ShowDialog" [HeaderName]="'Add New Lawajam'" (dialogClosed)="toggleDialog($event)"></app-new>
+<p-confirmdialog [style]="{ width: '450px' }" />

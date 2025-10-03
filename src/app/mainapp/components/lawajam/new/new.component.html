@@ -1,0 +1,30 @@
+<p-dialog [(visible)]="ShowDialog" [style]="{ width: '50vw' }" [header]="HeaderName" [modal]="true">
+    <ng-template #content>
+        <div class="grid grid-cols-12 gap-4 my-4 px-2">
+            <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                <label for="">Lawajam Name</label>
+                <input pInputText type="text" placeholder="Individual" />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                <label for="">Monthly Price</label>
+                <p-inputnumber inputId="integeronly" type="text" placeholder="25" />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                <label for="">Yearly Price</label>
+                <p-inputnumber inputId="integeronly" type="text" placeholder="250" />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-6 flex flex-col gap-2">
+                <label for="">Features</label>
+                <p-multiselect [options]="['Feature 1', 'Feature 2', 'Feature 3']" placeholder="Select Features" [appendTo]="'body'" class="w-full" />
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #footer>
+        <div class="flex gap-2 pt-4">
+            <p-button label="Cancel" variant="outlined" severity="contrast" [rounded]="true"
+                styleClass="btn-outline-custom" (click)="hideDialog()"></p-button>
+            <p-button label="Save" severity="contrast" [rounded]="true" styleClass="btn-solid-custom"
+                (click)="saveSelection()"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>
